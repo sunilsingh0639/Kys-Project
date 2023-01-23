@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutsComponent } from './shared/layouts/layouts.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./features/auth/auth.module')
-    .then((mod) => mod.AuthModule)
+    component : LayoutsComponent
   }
   // {
   //   path : '',
