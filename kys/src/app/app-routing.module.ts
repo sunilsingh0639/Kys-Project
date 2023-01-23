@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./features/auth/auth.module')
-    .then((mod) => mod.AuthModule)
+    loadChildren: () => import('./features/renew/renew.module')
+    .then((mod) => mod.RenewModule)
   }
   // {
   //   path : '',

@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+
+
+
 
 
 @NgModule({
@@ -15,7 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule
   ], exports:[
     MatSlideToggleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }
