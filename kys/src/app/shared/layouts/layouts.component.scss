@@ -1,0 +1,83 @@
+.container-fluid {
+    padding: 0;
+
+    #navbar {
+        background: linear-gradient(133.87deg, #dc3545 0%, #1d4fa2 50%, #c5198c 100%);
+        padding: 15px 30px;
+    }
+
+    .container-fluid {
+        a {
+            color: white;
+            font-size: 22px;
+            font-family: sans-serif;
+        }
+
+        button {
+            border: 2px solid white;
+            opacity: 70%;
+        }
+
+        div {
+            ul {
+                li {
+                    a {
+                        font-size: 16px;
+                        font-family: sans-serif;
+                        opacity: 50%;
+                        padding-right: 14px;
+                        font-weight: 500;
+                    }
+
+                    a:hover {
+                        opacity: 75%;
+                    }
+
+                    .active {
+                        opacity: 100%;
+                    }
+
+                    div {
+                        padding: 0;
+                        margin: 0;
+                        margin-top: 17px;
+                        border-radius: 0;
+                        position: absolute;
+                        left: auto !important;
+                        z-index: 2;
+                        top: 96% !important;
+                        min-width: 160px;
+                        right: 10px;
+                        a {
+                            padding: 10px 8px;
+                            font-size: 14px;
+                            border-bottom: 2px solid grey;
+                            background-color: white;
+                            color: black;
+                            font-family: sans-serif;
+                            font-weight: 550;
+                        }
+
+                        a:hover {
+                            background-color: #810759;
+                            color: white;
+                        }
+                    }
+                }
+
+                #profile {
+                    div {
+                        position: absolute;
+                        a {
+                            color: black;
+                            background-color: white;
+                            border: none;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}
