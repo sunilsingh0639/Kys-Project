@@ -9,7 +9,7 @@ import { SubscriberTypeComponent } from './subscriber-type/subscriber-type.compo
 
 const routes: Routes = [
   {
-    path: 'subscribe',
+    path: '',
     component: SubscribeComponent
   },
   {
@@ -21,11 +21,11 @@ const routes: Routes = [
     component: ConfirmationComponent
   },
   {
-    path: '',
+    path: 'subscriber-type',
     component: SubscriberTypeComponent
   },
   {
-    path: ' personal-information',
+    path: 'personal-information',
     component: PersonalInformationComponent
   }
 ];

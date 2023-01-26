@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SubscriberTypeComponent } from './features/renew/subscriber-type/subscriber-type.component';
+import { LayoutsComponent } from './shared/layouts/layouts.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./features/renew/renew.module')
-    .then((mod) => mod.RenewModule)
+    .then((mod) => mod.RenewModule),
+    component: LayoutsComponent
+
   }
   // {
   //   path : '',
@@ -43,13 +47,13 @@ const routes: Routes = [
   //           (mod) => mod.SubscriberModule
   //         ),
   //     },
-  //     {
-  //       path: 'renew',
-  //       loadChildren: () =>
-  //         import('./features/renew/renew.module').then(
-  //           (mod) => mod.RenewModule
-  //         ),
-  //     },
+      ,{
+         path: 'renew',
+         loadChildren: () =>
+           import('./features/renew/renew.module').then(
+             (mod) => mod.RenewModule
+          ),
+     },
   //     {
   //       path: 'admin',
   //       loadChildren: () =>
