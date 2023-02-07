@@ -25,15 +25,21 @@
                         font-size: 16px;
                         font-family: sans-serif;
                         opacity: 50%;
-                        padding-right: 14px;
+                        padding-right: 16px;
                         font-weight: 500;
+                        padding-top: 20px;
                     }
 
                     a:hover {
                         opacity: 75%;
                     }
 
-                    .active {
+                    .chalu {
+                        color: white;
+                        opacity: 100%;
+                    }
+                    .chalu:hover{
+                        color: white;
                         opacity: 100%;
                     }
 
@@ -48,6 +54,7 @@
                         top: 96% !important;
                         min-width: 160px;
                         right: 10px;
+
                         a {
                             padding: 10px 8px;
                             font-size: 14px;
@@ -59,8 +66,14 @@
                         }
 
                         a:hover {
-                            background-color: #810759;
+                            background-color: #b32082 ;
                             color: white;
+                            opacity: 90%;
+                        }
+                        .in_chalu{
+                            background-color: #4f16aa ;
+                            color: white;
+                            opacity: 90%;
                         }
                     }
                 }
@@ -68,6 +81,7 @@
                 #profile {
                     div {
                         position: absolute;
+
                         a {
                             color: black;
                             background-color: white;
