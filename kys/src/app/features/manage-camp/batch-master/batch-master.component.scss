@@ -1,0 +1,124 @@
+#subscribe {
+    background: #e5e5e5;
+    color: black;
+    padding: 15px 35px;
+    font-size: 20px;
+}
+
+#admin {
+    padding: 0 16px 4px 16px;
+    margin: 0;
+    background-color: rgb(248, 247, 247);
+
+    #search {
+        margin-bottom: 10px;
+
+        .search_navbar {
+            border-radius: 5px;
+            padding: 8px 20px;
+            background: linear-gradient(133.87deg, #dc3545 0%, #1d4fa2 50%, #c5198c 100%);
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+                background-color: #1d4fa2;
+                border: none;
+                color: white;
+                font-size: 14px;
+            }
+
+            button:hover {
+                background-color: orangered;
+            }
+        }
+    }
+
+    .modal-body {
+        label {
+            font-size: 18px;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 18px;
+        }
+    }
+
+    #mat_table {
+
+        table {
+
+            .mat-column-batchId,
+            .mat-column-campNumber,
+            .mat-column-createDate,
+            .mat-column-count {
+                font-size: 16px !important;
+            }
+            @media only screen and (max-width: 886px) {
+
+                .mat-column-batchId,
+            .mat-column-campNumber,
+            .mat-column-createDate,
+            .mat-column-count {
+                font-size: 18px !important;
+            }
+            }
+
+            .mat-mdc-cell .edit_btn {
+                background-color: #689F38 ;
+                padding: 10px 10px 8px 10px;
+                border: none;
+                border-radius: 30px;
+                color: white;
+                margin: 10px;
+            }
+            .mat-mdc-cell .edit_btn:hover{
+                cursor: pointer;
+                background-color: #689f00;
+            }
+            .mat-mdc-cell .delete_btn {
+                border: none; 
+                border-radius: 30px; 
+                color: black; 
+                padding: 10px 10px 8px 10px ;
+                background-color: #FBC92D; 
+                margin: 10px;
+            }
+            .mat-mdc-cell .delete_btn:hover{
+                cursor: pointer;
+                background-color: #FBC02D;
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (max-width: 886px) {
+
+    :host ::ng-deep thead {
+        display: none;
+    }
+
+    :host ::ng-deep tr.mat-mdc-row:hover {
+        background-color: #dee2e6 !important;
+    }
+    
+    :host ::ng-deep td:first-child {
+        padding-top: 30px;
+    }
+    
+    :host ::ng-deep td {
+        display: flex;
+        flex-direction: column;
+        border-bottom: none;
+        padding: 15px 20px;
+    }
+
+    :host ::ng-deep .icons {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #E0E0E0;
+        justify-content: space-between;
+    }
+}

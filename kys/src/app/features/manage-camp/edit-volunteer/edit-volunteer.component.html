@@ -1,0 +1,193 @@
+<div class="row" id="subscribe">
+    Enter New Volunteer Details
+</div>
+<div id="admin">
+    <div id="details">
+        Enter New Volunteer Deatils
+    </div>
+    <div id="form" class="card-body">
+        <form [formGroup]="volunteerMasterForm">
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Enrollment Number</b></label>
+                    <input type="text" class="form-control" placeholder="Enrollment Number" name="vId"
+                        formControlName="vId">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Volunteer Registration Number</b></label>
+                    <input type="text" class="form-control" placeholder="Volunteer Registration Number" name="vRNumber"
+                        formControlName="vRNumber">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>AADHAR Number</b></label>
+                    <input type="text" class="form-control" placeholder="AADHAR Number" name="uId"
+                        formControlName="uId">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>First Name</b></label>
+                    <input type="text" class="form-control" placeholder="First name" name="firstName"
+                        formControlName="firstName">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Middle Name</b></label>
+                    <input type="text" class="form-control" placeholder="Middle name" name="middleName"
+                        formControlName="middleName">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Last Name</b></label>
+                    <input type="text" class="form-control" placeholder="Last name" name="lastName"
+                        formControlName="lastName">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>DOB</b></label>
+                    <input type="date" class="form-control" name="dob" formControlName="dob">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Age</b></label>
+                    <input type="text" class="form-control" placeholder="Age" name="age" formControlName="age">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Mobile (Primary)</b></label>
+                    <input type="text" class="form-control" placeholder="Mobile" name="mobile" formControlName="mobile">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Mobile (Secondary)</b></label>
+                    <input type="text" class="form-control" placeholder="Mobile" name="secondaryMobile"
+                        formControlName="secondaryMobile">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for=""><b>Email (Primary)</b></label>
+                    <input type="text" class="form-control" placeholder="Email" name="primaryEmail" formControlName="primaryEmail">
+                </div>
+                <div formArrayName="address" class="row">
+                    <div id="current_Address" [formGroupName]="0">
+                        <div>
+                            <h3 class="text-primary mt-5">
+                                <b>Current Address</b>
+                            </h3>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>Address Line 1</b></label>
+                                <input type="text" class="form-control" placeholder="Building / Society / House No."
+                                    name="addressLine1" formControlName="addressLine1">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>Address Line 2</b></label>
+                                <input type="text" class="form-control" placeholder="Apt. No. /  Street etc"
+                                    name="addressLine2" formControlName="addressLine2">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>Locality</b></label>
+                                <input type="text" class="form-control" placeholder="Landmark" name="locality" formControlName="locality">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>V&P/City</b></label>
+                                <input type="text" class="form-control" placeholder="City" name="city"
+                                    formControlName="city">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>State</b></label>
+                                <select name="state" class="form-control" formControlName="state">
+                                    <option type="text" [value]="state" *ngFor="let state of allStates?.data">
+                                        {{state}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>District</b></label>
+                                <select name="district" class="form-control" formControlName="district">
+                                    <option type="text" [value]="dist" *ngFor="let dist of allDistrcicts0?.data" >
+                                        {{dist}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for=""><b>V&P/City</b></label>
+                                <input type="text" class="form-control" placeholder="City" name="city"
+                                    formControlName="city">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for=""><b>Tehsil</b></label>
+                                <input type="text" class="form-control" placeholder="Tehsil" name="tehsil"
+                                    formControlName="tehsil">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for=""><b>Pin</b></label>
+                                <input type="text" class="form-control" placeholder="Pin" name="pin"
+                                    formControlName="pin">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="permanent_Address" [formGroupName]="1">
+                        <div>
+                            <h3 class="text-primary mt-5">
+                                <b>Permanent Address</b>
+                            </h3>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>Address Line 1</b></label>
+                                <input type="text" class="form-control" placeholder="Building / Society / House No."
+                                    name="addressLine1" formControlName="addressLine1">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>Address Line 2</b></label>
+                                <input type="text" class="form-control" placeholder="Apt. No. /  Street etc"
+                                    name="addressLine2" formControlName="addressLine2">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>Locality</b></label>
+                                <input type="text" class="form-control" placeholder="Landmark" name="locality"
+                                    formControlName="locality">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>V&P/City</b></label>
+                                <input type="text" class="form-control" placeholder="City" name="city"
+                                    formControlName="city">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>State</b></label>
+                                <select name="state" class="form-control" formControlName="state">
+                                    <option type="text" [value]="state" *ngFor="let state of allStates?.data">
+                                        {{state}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for=""><b>District</b></label>
+                                <select name="district" class="form-control" formControlName="district">
+                                    <option type="text" [value]="dist" *ngFor="let dist of allDistrcicts1?.data">
+                                        {{dist}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for=""><b>V&P/City</b></label>
+                                <input type="text" class="form-control" placeholder="City" name="city"
+                                    formControlName="city">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for=""><b>Tehsil</b></label>
+                                <input type="text" class="form-control" placeholder="Tehsil" name="tehsil"
+                                    formControlName="tehsil">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label for=""><b>Pin</b></label>
+                                <input type="text" class="form-control" placeholder="Pin" name="pin"
+                                    formControlName="pin">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12" id="action_btn">
+                        <button id="cancel" routerLink="/app/manage-camp/voluteer-master">Cancel</button>
+                        <button id="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,116 @@
+<div class="row" id="subscribe">
+    Batch Details
+</div>
+
+<div id="admin">
+    <div id="search">
+        <nav class="search_navbar">
+            <button type="button" class="btn btn-primary" (click)="resetForm()" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New</button>
+        </nav>
+    </div>
+    <div id="mat_table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="sortData($event)">
+            <ng-container matColumnDef="batchId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> BatchId </th>
+                <td mat-cell *matCellDef="let batch"> {{batch.batchId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="campNumber">
+                <th mat-header-cell *matHeaderCellDef> Camp </th>
+                <td mat-cell *matCellDef="let batch"> {{batch.displayCamp}} </td>
+            </ng-container>
+            <ng-container matColumnDef="createDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Batch Create Date </th>
+                <td mat-cell *matCellDef="let batch"> {{batch.createDate | date:'dd/MM/YYYY' }} </td>
+            </ng-container>
+            <ng-container matColumnDef="count">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Count </th>
+                <td mat-cell *matCellDef="let batch"> {{batch.count}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef style="font-size: 16px !important;"> Action </th>
+                <td mat-cell *matCellDef="let batch ; let i = index" class="icons">
+                    <button class="edit_btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="editBatchMaster(i)">
+                        <mat-icon>mode_edit_outline</mat-icon></button>
+                    <button class="delete_btn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        (click)="selectedBatchMasterId=batch._id">
+                        <mat-icon>delete_outline</mat-icon></button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <form [formGroup]="batchMasterForm">
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;"
+                            class="modal-title fs-5" id="exampleModalLabel">Type Details</h1>
+                        <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label">Batch Id</label>
+                            <input type="text" class="form-control" name="batchId" formControlName="batchId">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Camp Number</label>
+                            <select type="select" class="form-control" name="campNumber" formControlName="campNumber">
+                                <option *ngFor="let camp of allCampIds?.data"
+                                    [value]="camp.id + '-' + camp.city + '-' + camp.dist + '-' + camp.state + '-' + camp.year">
+                                    {{camp.id + '-' + camp.city + '-' + camp.dist + '-' + camp.state + '-' + camp.year}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Batch Creation Date</label>
+                            <input type="date" class="form-control" name="createDate" formControlName="createDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Count</label>
+                            <input type="text" class="form-control" name="count" formControlName="count">
+                        </div>
+                    </div>
+                    <div class="modal-footer mb-3">
+                        <button type="submit" data-bs-dismiss="modal" (click)="addBatchMaster()"
+                            class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- //////////////// delete popup -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <span><i class="fa-solid fa-triangle-exclamation"></i></span>
+                        Are you sure you want to delete the selected book?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> No</button>
+                    <button (click)="deleteBatchMaster()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-check"></i> Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

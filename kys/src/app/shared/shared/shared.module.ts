@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatButtonModule } from '@angular/material/button';
+import {CdkTableModule} from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -12,12 +16,20 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     SharedRoutingModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-  ], 
+    MatTableModule,
+    CdkTableModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSortModule,
+  ],
   exports: [
-    MatSlideToggleModule,
-    MatButtonModule,
+    MatTableModule,
+    CdkTableModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSortModule,
   ]
 })
 export class SharedModule { }

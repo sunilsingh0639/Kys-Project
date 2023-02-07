@@ -1,0 +1,125 @@
+<div class="row" id="subscribe">
+    Manage Books
+</div>
+
+<div id="admin">
+    <div id="search">
+        <nav class="search_navbar" [formGroup]="bookForm">
+            <input type="search" placeholder="search.." aria-label="Search" formControlName="searchKey" name="searchKey"
+                (keyup)="filter(bookForm.value.searchKey)">
+            <button type="button" class="btn btn-primary" (click)="reserForm()" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New</button>
+        </nav>
+    </div>
+    <div id="table">
+        <table class="table table-hover table-sortable">
+            <thead>
+                <tr>
+                    <th class="col-md-1" id="name" scope="col" (click)="sortBy()">#</th>
+                    <th class="col-md-2" scope="col" (click)="sortBy()">Name</th>
+                    <th class="col-md-3" scope="col">Image</th>
+                    <th class="col-md-2" scope="col" (click)="sortBy()">Price</th>
+                    <th class="col-md-2" scope="col" (click)="sortBy()">Categeory</th>
+                    <th class="col-md-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of allBooks?.data ; let i = index ">
+                    <td>{{i+1}}</td>
+                    <td>{{book.bookName}}</td>
+                    <td><img height="100px" width="150px" [src]="'http://103.224.246.103:3004/' + book.image"
+                            alt="Image not available"></td>
+                    <td>{{book.pricing}}</td>
+                    <td>{{book.category}}</td>
+                    <td id="media_special">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="editBook(i)" style="border: none; color: white; background-color: green;">
+                            <i class="fa-solid fa-pen"></i></button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                            (click)="selectedBookId=book._id"
+                            style="border: none; color: white; background-color: red;">
+                            <i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div *ngFor="let card of pageSlice">
+            {{card.cardNumber}}
+        </div> -->
+    </div>
+    <!-- <mat-paginator [length]="carditems.length" [pageSize]="3" [pageSizeOptions]="[3]" 
+    aria-label="Select page" (page)="onPageChange($event)">
+
+    </mat-paginator> -->
+
+    <form [formGroup]="bookForm">
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;" class="modal-title fs-5" id="exampleModalLabel">Book Details</h1>
+                        <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label">Name</label>
+                            <input type="text" class="form-control" name="bookName" formControlName="bookName"
+                                placeholder="Enter Book Name" required minlength="5" maxlength="30"
+                                pattern="[a-zA-Z ]*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Price</label>
+                            <input type="number" class="form-control" name="pricing" formControlName="pricing">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Category</label>
+                            <select type="select" class="form-control" name="category" formControlName="category">
+                                <option value="साहित्य">साहित्य</option>
+                                <option value="programming">programming</option>
+                                <option value="general">general</option>
+                                <option value="others">others</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Image</label>
+                            <input type="file" (change)="onFileChange($event)" class="form-control" name="image"
+                                formControlName="image">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" data-bs-dismiss="modal" (click)="addNewBook()"
+                            class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- //////////////// delete popup -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <span><i class="fa-solid fa-triangle-exclamation"></i></span>
+                        Are you sure you want to delete the selected book?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> No</button>
+                    <button (click)="deleteBook()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-check"></i> Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

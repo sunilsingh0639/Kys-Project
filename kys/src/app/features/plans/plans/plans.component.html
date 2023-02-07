@@ -1,0 +1,121 @@
+<div class="row" id="subscribe">
+    Manage Plan
+</div>
+
+<div id="admin">
+    <div id="search">
+        <nav class="search_navbar" [formGroup]="planForm">
+            <input type="search" placeholder="search.." aria-label="Search" formControlName="searchKey"
+                (keyup)="filter(planForm.value.searchKey)">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="resetForm()" data-bs-whatever="@mdo">Add New</button>
+        </nav>
+    </div>
+    <div id="table">
+        <table class="table table-hover table-sortable">
+            <thead>
+                <tr>
+                    <th id="name" scope="col" (click)="sortBy()">Id</th>
+                    <th scope="col" (click)="sortBy()">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" (click)="sortBy()">Duration(Months)</th>
+                    <th scope="col" (click)="sortBy()">Books</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plan of allPlans?.data ; let i = index ">
+                    <td>{{plan.planId}}</td>
+                    <td>{{plan.name}}</td>
+                    <td>{{plan.price}}</td>
+                    <td>{{plan.duration}} Months</td>
+                    <td>{{plan.books}}</td>
+                    <td id="media_special">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="editPlan(i)" style="border: none; color: white; background-color: green;">
+                            <i class="fa-solid fa-pen"></i></button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                            (click)="selectedPlanId=plan._id"
+                            style="border: none; color: white; background-color: red;">
+                            <i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <form [formGroup]="planForm">
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;"
+                            class="modal-title fs-5" id="exampleModalLabel">Plan Details</h1>
+                        <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label">Name</label>
+                            <input type="text" class="form-control" name="name" formControlName="name"
+                                placeholder="Enter Book Name" required minlength="5" maxlength="30"
+                                pattern="[a-zA-Z ]*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Duration</label>
+                            <input type="number" class="form-control" name="duration" formControlName="duration">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Book</label>
+                            <select type="select" class="form-control" name="books" formControlName="books">
+                                <option value="">Choose Book</option>
+                                <option *ngFor="let book of allBooks?.data" [value]="book.bookName">
+                                    {{book.bookName}}
+                                <option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Price</label>
+                            <input type="number" class="form-control" name="price" formControlName="price">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">Description</label>
+                            <textarea class="form-control" name="description" formControlName="description" rows="4">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" data-bs-dismiss="modal" (click)="addNewPlan()"
+                            class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- //////////////// delete popup -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <span><i class="fa-solid fa-triangle-exclamation"></i></span>
+                        Are you sure you want to delete the selected book?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> No</button>
+                    <button (click)="deletePlan()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-check"></i> Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
