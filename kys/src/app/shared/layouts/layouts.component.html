@@ -8,45 +8,60 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="nav navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link" aria-current="page" routerLink="./dashboard" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">
                             <i class="fa-regular fa-clock"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Subscribers</a>
+                        <a class="nav-link" routerLink="./subscriber" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">Subscribers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage Admin</a>
+                        <a class="nav-link" routerLink="./admin" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">Manage Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Subscribe/Renew</a>
+                        <a class="nav-link" routerLink="./renew" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">Subscribe/Renew</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage Address</a>
+                        <a class="nav-link" routerLink="./address" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">Manage Address</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Plans</a>
+                        <a class="nav-link" routerLink="./plans" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">Plans</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="#">Books</a>
+                        <a class="nav-link" routerLink="./books" routerLinkActive="chalu"
+                            [routerLinkActiveOptions]="{exact : true}">Books</a>
                     </li>
                     <li class="nav-item dropdown show">
-                        <a class="drop nav-link top-menu dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false"> Camp Management
+                        <a class="drop nav-link top-menu dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#" id="dropdownMenuLink"
+                            aria-expanded="false"> Camp Management
                         </a>
-                        <div class="menu dropdown-menu">
-                            <a class="dropdown-item" routerLink="#">Camp Master</a>
-                            <a class="dropdown-item" routerLink="#">Batch Master</a>
-                            <a class="dropdown-item" href="file:///D:/New%20folder/button.html">Volunteers
+                        <div class="menu dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" routerLink="#" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Camp Master</a>
+                            <a class="dropdown-item" routerLink="./manage-camp/batchMaster" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Batch Master</a>
+                            <a class="dropdown-item" routerLink="./manage-camp/voluteer-master" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Volunteers
                                 Master</a>
-                            <a class="dropdown-item" routerLink="#">Member Master</a>
-                            <a class="dropdown-item" routerLink="#">Add Member In Camp</a>
-                            <a class="dropdown-item" routerLink="#">Camp Type</a>
-                            <a class="dropdown-item" routerLink="#" style="border: none !important;">Participants
+                            <a class="dropdown-item" routerLink="#" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Member Master</a>
+                            <a class="dropdown-item" routerLink="#" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Add Member In Camp</a>
+                            <a class="dropdown-item" routerLink="./manage-camp/camp-type" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Camp Type</a>
+                            <a class="dropdown-item" routerLink="./manage-camp/participantsType"
+                                style="border: none !important;" routerLinkActive="in_chalu"
+                                [routerLinkActiveOptions]="{exact : true}">Participants
                                 Type</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="profile">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" routerLink="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <img class="avatar-img rounded-circle"
                                 src="http://103.224.246.103:3004/uploads/61ddac3a0dd0d864990122f7/1665770094839WhatsApp%20Image%202022-10-01%20at%209.44.05%20PM.jpeg"
@@ -66,4 +81,5 @@
             </div>
         </div>
     </nav>
+    <router-outlet></router-outlet>
 </div>
