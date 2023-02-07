@@ -1,0 +1,122 @@
+#subscribe {
+    background: #e5e5e5;
+    color: black;
+    padding: 10px 35px;
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+
+    .col {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+            background-color: #1d4fa2;
+            border: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: orangered;
+        }
+    }
+
+}
+
+#admin {
+    #mat_table {
+
+        table {
+            .mat-mdc-header-cell {
+                font-size: 14px !important;
+                font-weight: normal;
+                background-color: #e9ecef;
+            }
+
+            tr.example-element-row:not(.example-expanded-row):hover {
+                background: whitesmoke !important;
+            }
+
+            tr.example-element-row:not(.example-expanded-row):active {
+                background: #efefef !important;
+            }
+
+            .example-element-row td {
+                font-family: sans-serif;
+                border-bottom-width: 0 !important;
+                padding: 20px 16px !important;
+
+                button {
+                    background: none;
+                    border: none;
+                    display: flex;
+                    padding: 8px;
+                    justify-content: center;
+                    border-radius: 50%;
+                }
+
+                button:hover {
+                    background-color: #dee2e6 !important;
+                }
+            }
+
+            // .mat-mdc-cell .edit_btn {
+            //     background-color: #689F38 ;
+            //     padding: 10px 10px 8px 10px;
+            //     border: none;
+            //     border-radius: 30px;
+            //     color: white;
+            //     margin: 10px;
+            // }
+            // .mat-mdc-cell .edit_btn:hover{
+            //     cursor: pointer;
+            //     background-color: #689f00;
+            // }
+            // .mat-mdc-cell .delete_btn {
+            //     border: none; 
+            //     border-radius: 30px; 
+            //     color: black; 
+            //     padding: 10px 10px 8px 10px ;
+            //     background-color: #FBC92D; 
+            //     margin: 10px;
+            // }
+            // .mat-mdc-cell .delete_btn:hover{
+            //     cursor: pointer;
+            //     background-color: #FBC02D;
+            // }
+        }
+    }
+
+
+}
+
+// @media only screen and (max-width: 886px) {
+
+//     :host ::ng-deep thead {
+//         display: none;
+//     }
+
+//     :host ::ng-deep tr.mat-mdc-row:hover {
+//         background-color: #dee2e6 !important;
+//     }
+
+//     :host ::ng-deep td:first-child {
+//         padding-top: 30px;
+//     }
+
+//     :host ::ng-deep td {
+//         display: flex;
+//         flex-direction: column;
+//         border-bottom: none;
+//         padding: 15px 20px;
+//     }
+
+//     :host ::ng-deep .icons {
+//         display: flex;
+//         flex-direction: row;
+//         border-bottom: 1px solid #E0E0E0;
+//         justify-content: space-between;
+//     }
+// }
