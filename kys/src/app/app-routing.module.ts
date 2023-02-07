@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component : LayoutsComponent
-  }
+  },
   // {
   //   path : '',
   //   component : login ka component
@@ -22,13 +22,13 @@ const routes: Routes = [
   //           (mod) => mod.BooksModule
   //         ),
   //     },
-  //     {
-  //       path: 'auth',
-  //       loadChildren: () =>
-  //         import('./features/auth/auth.module').then(
-  //           (mod) => mod.AuthModule
-  //         ),
-  //     },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./features/auth/auth.module').then(
+            (mod) => mod.AuthModule
+          ),
+      },
   //     {
   //       path: 'plans',
   //       loadChildren: () =>
@@ -57,16 +57,16 @@ const routes: Routes = [
   //           (mod) => mod.AdminModule
   //         ),
   //     },
-  //     {
-  //       path: 'address',
-  //       loadChildren: () =>
-  //         import('./features/address/address.module').then(
-  //           (mod) => mod.AddressModule
-  //         ),
-  //     },
-  //   ]
+    {
+         path: 'address',
+        loadChildren: () =>
+          import('./features/address/address.module').then(
+          (mod) => mod.AddressModule
+          ),
+      },
+   //  ]
   // }
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

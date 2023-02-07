@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent,HttpInterceptor} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AdminService } from '../services/admin.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private Service:AdminService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  
+  let token = sessionStorage.getItem('');
+
+  let jwttoken  = request.clone({
+    setHeaders:{
+
+      Authorization: 'bearer' + token
+    }
+    
+  })
+    return next.handle(jwttoken);
   }
 }
