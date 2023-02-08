@@ -1,0 +1,139 @@
+<nav class="navbar navbar-light header-page">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand">Manage Address </a>
+    </div>
+</nav>
+<div class="card">
+
+    <div class="card-header"> Search Address </div>
+
+    <form [formGroup]="addressForm">
+        <div class="card-body" style="margin: 10px;">
+
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>Admin</label>
+                        <h3></h3>
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="admin">
+                            <option selected>Select a Admin</option>
+                            <option value="1">One</option>
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>State</label>
+                        <h3></h3>
+
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="state">
+                            <option selected>State</option>
+                            <option value="1">One</option>
+
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>District</label>
+                        <h3></h3>
+
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="district">
+                            <option selected>District</option>
+                            <option value="1">One</option>
+
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>Book</label>
+                        <h3></h3>
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="book">
+                            <option selected>Book</option>
+                            <option value="1">One</option>
+
+                        </select>
+
+                    </div>
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>Start Date</label>
+                        <h3></h3>
+
+                        <input type="date" class="form-control" style="height: 40px;">
+
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>End Date</label>
+                        <h3></h3>
+
+                        <input type="date" class="form-control" style="height: 40px;">
+                    </div>
+
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="text-align: end;">
+
+                <button type="button" class="btn btn-secondary" style="background-color: black;">Reset</button>
+
+                <button type="button" class="btn btn-primary" style="margin-left: 10px;">Search</button>
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+</div>
