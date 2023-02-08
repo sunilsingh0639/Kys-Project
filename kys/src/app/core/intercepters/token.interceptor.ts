@@ -10,19 +10,20 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() { }
+
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    
-    let token = sessionStorage.getItem('');
 
-    let jwttoken = request.clone({
+    const token = sessionStorage.getItem('token')
 
-      setHeaders:{
-        Authorization : 'Bearer'+' '+ token
-      }
-    })
+    if (token) {
+       request = request.clone({
+        setHeaders: { Authorization: `Bearer ${token}` }
+      });
+    }
 
-    return next.handle(jwttoken);
+
+    return next.handle(request);
   }
 }

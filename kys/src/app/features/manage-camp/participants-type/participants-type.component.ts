@@ -14,7 +14,7 @@ export class ParticipantsTypeComponent {
   allParticipantsType: any
   selectedParticipantsTypeId: string = '';
 
-  constructor(private fb: FormBuilder, private partiTypeService: ParticipantsTypeListService) {
+  constructor(private fb: FormBuilder, private participantTypeService: ParticipantsTypeListService) {
     this.participantsTypeForm = this.fb.group({
       description: ["", [Validators.required]],
     })
@@ -22,7 +22,7 @@ export class ParticipantsTypeComponent {
 
 
   getParticipantsType(): void {
-    this.partiTypeService.getParticipantsTypeList()
+    this.participantTypeService.getParticipantsTypeList()
       .subscribe(res => {
         console.log(res)
         this.allParticipantsType = res
@@ -55,7 +55,7 @@ export class ParticipantsTypeComponent {
         _id: this.allParticipantsType?.data[this.editSelected]._id
       }
 
-      this.partiTypeService.editParticipantsType(participants)
+      this.participantTypeService.editParticipantsType(participants)
         .subscribe((res: any) => {
           console.log(res)
           this.getParticipantsType();
@@ -65,7 +65,7 @@ export class ParticipantsTypeComponent {
       let participants = {
         description: this.participantsTypeForm.value.description,
       }
-      this.partiTypeService.addNewParticipantsType(participants)
+      this.participantTypeService.addNewParticipantsType(participants)
         .subscribe((res: any) => {
           console.log(res);
           this.getParticipantsType();
@@ -77,7 +77,7 @@ export class ParticipantsTypeComponent {
 
   /// delete
   deleteParticipantsType() {
-    this.partiTypeService.deleteParticipantsType(this.selectedParticipantsTypeId)
+    this.participantTypeService.deleteParticipantsType(this.selectedParticipantsTypeId)
       .subscribe((res: any) => {
         console.log(res)
         this.getParticipantsType();

@@ -3,7 +3,7 @@
 
     #navbar {
         background: linear-gradient(133.87deg, #dc3545 0%, #1d4fa2 50%, #c5198c 100%);
-        padding: 15px 30px;
+        padding: 15px 10px;
     }
 
     .container-fluid {
@@ -20,12 +20,13 @@
 
         div {
             ul {
+
                 li {
                     a {
                         font-size: 16px;
                         font-family: sans-serif;
                         opacity: 50%;
-                        padding-right: 16px;
+                        padding-right: 12px;
                         font-weight: 500;
                         padding-top: 20px;
                     }
@@ -38,7 +39,8 @@
                         color: white;
                         opacity: 100%;
                     }
-                    .chalu:hover{
+
+                    .chalu:hover {
                         color: white;
                         opacity: 100%;
                     }
@@ -66,12 +68,13 @@
                         }
 
                         a:hover {
-                            background-color: #b32082 ;
+                            background-color: #b32082;
                             color: white;
                             opacity: 90%;
                         }
-                        .in_chalu{
-                            background-color: #4f16aa ;
+
+                        .in_chalu {
+                            background-color: #4f16aa;
                             color: white;
                             opacity: 90%;
                         }

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiEnpoints } from '../api-endponts';
 
 @Injectable({
   providedIn: 'root'
@@ -9,29 +10,19 @@ export class CampTypeListService {
   constructor(private http: HttpClient) { }
 
   getCampTypeList() {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/camp-type/list', { 'headers': headers })
+    return this.http.get(ApiEnpoints.campType()+'list')
   }
 
   deleteCampType(typeId: string) {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/camp-type/deleteById?id=' + typeId, { 'headers': headers })
+    return this.http.get(ApiEnpoints.campType()+'deleteById?id=' + typeId)
   }
 
   editCampType(body: any) {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.post('http://103.224.246.103:3004/camp/camp-type/edit', body, { 'headers': headers })
+    return this.http.post(ApiEnpoints.campType()+'edit', body)
   }
 
   addNewCampType(body: any) {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.post('http://103.224.246.103:3004/camp/camp-type/save', body, { 'headers': headers })
+    return this.http.post(ApiEnpoints.campType()+'save', body)
   }
 
 }

@@ -42,12 +42,12 @@ export class VolunteerMasterComponent {
   selectedVolunteerData: any;
 
 
-  constructor(private service: VolunteerMasterService) {
+  constructor(private volunteerService: VolunteerMasterService) {
     this.isVolunteerList();
   }
 
   isVolunteerList() {
-    this.service.isVolunteerList(this.isValid)
+    this.volunteerService.isVolunteerList(this.isValid)
       .subscribe((res: any) => {
         console.log(res)
         this.allisVolunteer = res
@@ -58,11 +58,11 @@ export class VolunteerMasterComponent {
   }
 
   editVolunteer(i: number) {
-    this.service.editVolunteerDetails(this.allisVolunteer?.data[i]._id)
+    this.volunteerService.editVolunteerDetails(this.allisVolunteer?.data[i]._id)
       .subscribe(res => {
         // console.log(res)
         this.selectedVolunteerData = res
-        this.service.setVolunteerData(this.selectedVolunteerData)
+        this.volunteerService.setVolunteerData(this.selectedVolunteerData)
       })
   }
 
