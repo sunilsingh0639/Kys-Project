@@ -8,8 +8,7 @@ import { AppComponent } from './app.component';
 import { LayoutsComponent } from './shared/layouts/layouts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorCatchingInterceptor } from './core/intercepters/error-catching.interceptor';
-
-
+import { TokenInterceptor } from './core/intercepters/token.interceptor';
 
 
 
@@ -31,6 +30,11 @@ import { ErrorCatchingInterceptor } from './core/intercepters/error-catching.int
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
       useClass: ErrorCatchingInterceptor,
       multi: true
     }

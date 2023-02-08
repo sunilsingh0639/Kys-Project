@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiEnpoints } from '../api-endponts';
 
 @Injectable({
   providedIn: 'root'
@@ -9,29 +10,19 @@ export class ParticipantsTypeListService {
   constructor(private http: HttpClient) { }
 
   getParticipantsTypeList() {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/participants-type/list', { 'headers': headers })
+    return this.http.get(ApiEnpoints.participantsType()+'list')
   }
 
   deleteParticipantsType(typeId: string) {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/participants-type/deleteById?id=' + typeId, { 'headers': headers })
+    return this.http.get(ApiEnpoints.participantsType()+'deleteById?id=' + typeId)
   }
 
   editParticipantsType(body: any) {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.post('http://103.224.246.103:3004/camp/participants-type/edit', body, { 'headers': headers })
+    return this.http.post(ApiEnpoints.participantsType()+'edit', body)
   }
 
   addNewParticipantsType(body: any) {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.post('http://103.224.246.103:3004/camp/participants-type/save', body, { 'headers': headers })
+    return this.http.post(ApiEnpoints.participantsType()+'save', body)
   }
 
 }
