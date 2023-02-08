@@ -5,14 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { subscriberComponent } from './subscriber/subscriber.component';
+import { SubscriberComponent } from './subscriber/subscriber.component';
 
 
 
 
 @NgModule({
   declarations: [
-    subscriberComponent,
+    SubscriberComponent,
     ProfileComponent
   ],
   imports: [
