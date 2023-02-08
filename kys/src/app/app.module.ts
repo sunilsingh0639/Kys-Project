@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutsComponent } from './shared/layouts/layouts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorCatchingInterceptor } from './core/intercepters/error-catching.interceptor';
 import { TokenInterceptor } from './core/intercepters/token.interceptor';
 
 
@@ -32,6 +33,11 @@ import { TokenInterceptor } from './core/intercepters/token.interceptor';
       useClass: TokenInterceptor,
       multi: true
     },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: ErrorCatchingInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

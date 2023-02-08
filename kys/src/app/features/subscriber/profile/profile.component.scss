@@ -1,0 +1,117 @@
+.container-fluid {
+    background-color: #e5e5e5;
+
+    .text-home {
+        color: #de651a;
+        text-decoration: none;
+        font: 16px;
+        margin-left: 2%;
+    }
+
+    .text-home:hover {
+        color: blue;
+    }
+
+    .text-profile {
+        color: #6c757d;
+        font: 16px;
+    }
+
+}
+
+.body {
+    background-color: #f8f9fa;
+
+    .container {
+        .row {
+            .col.colm1 {
+                margin-left: -6%;
+
+                .numbercircle {
+                    color: #fff;
+                    width: 40px;
+                    border-radius: 50%;
+                    font-size: 12px;
+                    background-color: #de651a;
+                    line-height: 40px;
+                    text-align: center;
+                }
+            }
+
+            .col.colm2 {
+                margin-left: -90%;
+            }
+        }
+
+        .row {
+            .card.text-bg-light.card1 {
+                max-width: 24rem;
+                border: none;
+                margin-left: 1%;
+            }
+
+            .card.text-bg-light.card2 {
+                max-width: 24rem;
+                border: none;
+            }
+        }
+    }
+
+    .menu {
+        background-color: #fff;
+        border: 1px solid #f0f0f0;
+        padding: 0.9375rem 1.5rem;
+
+        .btn-default {
+            background-color: #de651a;
+            border-color: #de651a;
+            color: #fff;
+            margin: 3px;
+        }
+
+        .inactive_btn {
+            border: none;
+            text-decoration: none;
+            background-color: transparent;
+            color: black;
+        }
+
+        .inactive_btn:hover {
+            background-color: lightgray;
+            margin: 3px;
+        }
+
+        .btn-change {
+            background-color: #de651a;
+            border-color: #de651a;
+            color: #fff;
+            margin: 3px;
+        }
+    }
+
+    .table-fade.ms-5.me-5 {
+        width: 93%;
+        text-align: center;
+
+        .row_heading {
+            background-color: #cfe2ff;
+            color: white;
+
+            th {
+                padding: 0.75rem;
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    padding: 0.75rem;
+                }
+            }
+        }
+
+        tbody {
+            padding: 0.75rem;
+        }
+    }
+}

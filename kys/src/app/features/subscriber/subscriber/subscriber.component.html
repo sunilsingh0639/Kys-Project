@@ -1,0 +1,147 @@
+<div class="container-fluid textcolor">
+    <p class="text">Manage Subscribers</p>
+</div>
+<div class="background">
+
+    <mat-card>
+        <mat-card-content>
+            <div class="container-fluid card">
+                Search Subscribers
+                <hr>
+
+
+                <form [formGroup]="subscriberForm">
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="admin"> <b>Admin</b></label><br>
+
+                            <select name="" id="name" class="form-control  col-md-3 mt-3 p-2" formControlName="admin">
+                                <option *ngFor="let user of usersList?.data" [value]="user.name">{{user.name}}</option>
+                            </select>
+
+                        </div>
+                        <div class="col">
+                            <label for="state"> <b>State</b></label> <br>
+                            <select name="" id="" class="form-control col-md-3 mt-3 p-2" formControlName="state">
+                                <!-- <input type="search"> -->
+                                <option *ngFor="let state of stateList?.data ;" [value]="state">{{state}} </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="district"> <b>district</b></label> <br>
+                            <select name="cars" id="cars" class="form-control col-md-3 mt-3 p-2"
+                                formControlName="district">
+                                <option *ngFor="let district of districtList?.data ;" [value]="district">{{district}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="status"> <b>Status</b></label> <br>
+                            <select name="cars" id="cars" class="form-control col-md-3 mt-3 p-2"
+                                formControlName="status">
+                                <option value="Active">Active</option>
+                                <option value="In-Active">In-Active</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col">
+                            <label for="start-date"> <b>Start Date</b></label> <br>
+                            <input type="date" class="form-control col-md-3 mt-3 p-2" formControlName="sdate">
+                        </div>
+                        <div class="col">
+                            <label for="end-date"> <b>End Date</b></label> <br>
+                            <input type="date" class="form-control col-md-3 mt-3 p-2" formControlName="edate">
+                        </div>
+                        <div class="col">
+                            <label for="plan"> <b>Plan</b></label> <br>
+                            <select name="" id="" class="form-control col-md-3 mt-3 p-2" formControlName="plan">
+                                <option *ngFor="let plan of planList?.data" [value]="plan.name">{{plan.name}} </option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="book"> <b>Book</b></label> <br>
+                            <select name="" class="form-control col-md-3 mt-3 p-2" formControlName="book">
+                                <option *ngFor="let book of bookList?.data" [value]="book.bookName">{{book.bookName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <label for="mobile"> <b>Mobile</b></label> <br>
+                            <input class="form-control col-md-3 mt-3 p-2" type="text" aria-label="default input example"
+                                formControlName="mobile">
+
+                        </div>
+                        <div class="col-md-3">
+                            <label for="maker"> <b>Maker</b></label> <br>
+                            <input class="form-control col-md-3 mt-3 p-2" type="text" aria-label="default input example"
+                                formControlName="maker">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="Vouchernumber"> <b>Voucher Number</b></label> <br>
+                            <input class="form-control col-md-3 mt-3 p-2" type="text" aria-label="default input example"
+                                formControlName="voucher">
+                        </div>
+                    </div>
+
+                    <!-- <div class="btn-group mt-5 mb-4 ">
+                        <button type="" value="Reset" class="reset-btn btn-secondary" style="background-color: black;"
+                            (click)="resetForm()">Reset</button>
+                        <button type="submit" class="search-btn" (click)="gettingaApi()"> Search</button>
+                    </div> -->
+                    <div class="d-grid gap-1 d-md-flex justify-content-md-end mt-5 mb-4">
+                        <button class="reset-btn btn-secondary me-md-2" style="background-color: black;" type="button"
+                            (click)="resetForm()">Reset</button>
+                        <button class="btn btn-primary search-btn" (click)="gettingaApi()" type="submit">Search</button>
+                    </div>
+
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
+
+            <table class="table" style="width: 100%; font-size: 14px; text-align: center;">
+                <tr style="padding: 8px;" class="table_head" *ngIf="showHeading">
+                    <th>User Id</th>
+                    <th>Name</th>
+                    <th>Father Name</th>
+                    <th>District/City</th>
+                    <th>Mobile</th>
+                    <th>Pin Code</th>
+                    <th>Status</th>
+                    <th>Voucher Number</th>
+                    <th>Creation Date</th>
+                    <th>Action</th>
+                </tr>
+                <tr class="clom " *ngFor="let api of ApiList?.data ; let i = index">
+                    <td>{{api.subscriberId}}</td>
+                    <td>{{api.name}}</td>
+                    <td>{{api.fatherName}}</td>
+                    <td>{{api.city}}</td>
+                    <td>{{api.mobile}}</td>
+                    <td>{{api.pinCode}}</td>
+                    <td *ngIf="api.active == true"> <span class="active px-5">Active</span> </td>
+                    <td *ngIf="api.active == false"> <span class="active px-5">Inactive</span> </td>
+                    <td>{{api.voucherNumber}}</td>
+                    <td>{{api.createDate | date }}</td>
+                    <td>
+                        <button type="button" class="btn info" routerLink="/app/subscriber/user"
+                            (click)="selectedUserList(i)">
+                            <mat-icon>info</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+        </mat-card-content>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>
