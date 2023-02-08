@@ -1,0 +1,79 @@
+<p>profile works!</p>
+<!-- <p>profile works!</p> -->
+<nav class="container-fluid p-3 ">
+    <a class="text-home" routerLink="/app/subscriber">Home</a>
+    <span class="text-profile"> / Subscriber-Profile</span>
+</nav>
+
+<div class="body">
+
+    <div class="container ">
+        <div class="row">
+            <div class="col colm1 mt-2">
+                <div class="numbercircle">
+                    {{selectedUserData?.data['_doc'].subscriberId}}
+                </div>
+            </div>
+            <div class="col colm2 mt-2">
+                <h3> {{selectedUserData?.data['_doc'].name}} </h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="card text-bg-light card1">
+                <div class="card-body">
+                    <p> Phone: <b>{{selectedUserData?.data['_doc'].mobile}}</b></p>
+                    <p> City: <b>{{selectedUserData?.data['_doc'].city}}</b></p>
+                    <p> State: <b>{{selectedUserData?.data['_doc'].state}}</b></p>
+                    <p> Address: <b>{{selectedUserData?.data['_doc'].address}}</b></p>
+                </div>
+            </div>
+            <div class="card text-bg-light card2" style="max-width: 18rem;">
+                <div class="card-body">
+                    <p>PinCode: <b>{{selectedUserData?.data['_doc'].pinCode}}</b> </p>
+                    <p>Email: <b>{{selectedUserData?.data['_doc'].email}}</b> </p>
+                    <p>Active: <b>{{selectedUserData?.data['_doc'].active}}</b></p>
+                    <p>Voucher Number: <b>{{selectedUserData?.data['_doc'].voucherNumber}}</b></p>
+                    <p>Maker: <b>{{selectedUserData?.data['_doc'].maker}}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu ms-5 me-5">
+        <button type="button" [ngClass]="[bntStyle]" (click)="showData()">
+            Active
+        </button>
+
+        <button type="button" class="inactive_btn" [ngClass]="[bntStyle]" (click)="noData()">
+            InActive
+        </button>
+    </div>
+
+    <table class="table-fade ms-5 me-5">
+        <tr class="row_heading">
+            <th>Name</th>
+            <th>Duration</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Price</th>
+            <th>Address</th>
+        </tr>
+        <tbody *ngIf="activeData.length !== 0">
+            <tr *ngFor="let item of activeData">
+                <td>{{item.name}}</td>
+                <td> {{item.duration}} </td>
+                <td>{{item.startDate | date }}</td>
+                <td>{{item.endDate | date }}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.deliveryAddress.address}}</td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="activeData.length==0">
+            No Data Found
+        </tbody>
+    </table>
+    <router-outlet></router-outlet>
+
+</div>

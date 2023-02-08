@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { ApiEnpoints } from '../api-endponts';
 
 @Injectable({
   providedIn: 'root'
@@ -11,39 +12,29 @@ export class VolunteerMasterService {
 
 
   isVolunteerList(isValid: boolean) {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/volunteer-master/list?isVolunteer=' + isValid, { 'headers': headers })
+    return this.http.get(ApiEnpoints.volunteerMaster()+'list?isVolunteer=' + isValid)
   }
 
   getStatesList() {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/common/states/list', { 'headers': headers })
+    return this.http.get(ApiEnpoints.stateList())
   }
 
   getCampIdList() {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/camp-master/campIdList', { 'headers': headers })
+    return this.http.get(ApiEnpoints.campMaster()+'campIdList')
   }
 
   getDistrictList(dist: any) {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/common/distByState?state=' + dist, { 'headers': headers })
+    return this.http.get(ApiEnpoints.districtList() + dist)
   }
 
   editVolunteerDetails(id :any){
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-    return this.http.get('http://103.224.246.103:3004/camp/camp-master/volunteerById?id=' + id, { 'headers': headers })
+    return this.http.get(ApiEnpoints.campMaster()+'volunteerById?id=' + id)
   }
+
+  addVolunteerMaster(body : object){
+    return this.http.post(ApiEnpoints.volunteerMaster()+'save' , body)
+  }
+
 
 
 

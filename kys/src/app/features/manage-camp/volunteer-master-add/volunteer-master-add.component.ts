@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 import { VolunteerMasterService } from 'src/app/core/services/volunteer-master.service';
 
 @Component({
@@ -15,11 +16,13 @@ export class VolunteerMasterAddComponent {
   allCamps: any;
   allDistrcicts0: any;
   allDistrcicts1: any;
-  addressForm!: FormGroup
+  cAddressForm!: FormGroup
+  pAdressForm!: FormGroup
 
 
 
-  constructor(private fb: FormBuilder, private service: VolunteerMasterService) {
+  constructor(private fb: FormBuilder, private volunteerService: VolunteerMasterService ,
+    private route : Router) {
     this.initializeForm();
     this.stateList();
     this.campIdsList();
@@ -51,7 +54,7 @@ export class VolunteerMasterAddComponent {
   }
 
   addCAddress() {
-    const addressForm = this.fb.group({
+    this.cAddressForm = this.fb.group({
       addressLine1: ["", [Validators.required]],
       addressLine2: [""],
       locality: [""],
@@ -61,18 +64,18 @@ export class VolunteerMasterAddComponent {
       tehsil: [""],
       pin: [""],
     })
-    this.address.push(addressForm);
-    let state = addressForm.controls['state']
+    this.address.push(this.cAddressForm);
+    let state = this.cAddressForm.controls['state']
     state.valueChanges
-    .subscribe(res =>{
-      this.service.getDistrictList(res)
-      .subscribe((res: any) => {
-        this.allDistrcicts0 = res
+      .subscribe(res => {
+        this.volunteerService.getDistrictList(res)
+          .subscribe((res: any) => {
+            this.allDistrcicts0 = res
+          })
       })
-    })
   }
   addPAddress() {
-    const addressForm = this.fb.group({
+    this.pAdressForm = this.fb.group({
       addressLine1: ["", [Validators.required]],
       addressLine2: [""],
       locality: [""],
@@ -82,32 +85,85 @@ export class VolunteerMasterAddComponent {
       tehsil: [""],
       pin: [""],
     })
-    this.address.push(addressForm);
-    let state = addressForm.controls['state']
+    this.address.push(this.pAdressForm);
+    let state = this.pAdressForm.controls['state']
     state.valueChanges
-    .subscribe(res =>{
-      this.service.getDistrictList(res)
-      .subscribe((res: any) => {
-        this.allDistrcicts1 = res
+      .subscribe(res => {
+        this.volunteerService.getDistrictList(res)
+          .subscribe((res: any) => {
+            this.allDistrcicts1 = res
+          })
       })
-    })
   }
 
 
   stateList() {
-    this.service.getStatesList()
+    this.volunteerService.getStatesList()
       .subscribe((res: any) => {
         this.allStates = res
       })
   }
 
   campIdsList() {
-    this.service.getCampIdList()
+    this.volunteerService.getCampIdList()
       .subscribe((res: any) => {
         this.allCamps = res
       })
   }
 
+  addVolunteerMaster() {
+    const data = {
+      address: [
+        {
+          addressLine1: this.cAddressForm.value.addressLine1,
+          addressLine2: this.cAddressForm.value.addressLine2,
+          city: this.cAddressForm.value.city,
+          country: "",
+          district: this.cAddressForm.value.district,
+          locality: this.cAddressForm.value.locality,
+          pin: this.cAddressForm.value.pin,
+          state: this.cAddressForm.value.state,
+          tehsil: this.cAddressForm.value.tehsil,
+        },
+        {
+          addressLine1: this.pAdressForm.value.addressLine1,
+          addressLine2: this.pAdressForm.value.addressLine2,
+          city: this.pAdressForm.value.city,
+          country: "",
+          district: this.pAdressForm.value.district,
+          locality: this.pAdressForm.value.locality,
+          pin: this.pAdressForm.value.pin,
+          state: this.pAdressForm.value.state,
+          tehsil: this.pAdressForm.value.tehsil,
+        }
+      ],
+      age: this.volunteerMasterForm.value.age,
+      batchId: null,
+      campId: null,
+      dob: new Date(this.volunteerMasterForm.value.dob).getTime(),
+      firstName: this.volunteerMasterForm.value.firstName,
+      isVolunteer: true,
+      lastName: this.volunteerMasterForm.value.middleName,
+      middleName: this.volunteerMasterForm.value.lastName,
+      mobile: this.volunteerMasterForm.value.mobile,
+      newCount: null,
+      oldCount: null,
+      primaryEmail: this.volunteerMasterForm.value.primaryEmail,
+      secondaryEmail: "",
+      secondaryMobile: this.volunteerMasterForm.value.secondaryMobile,
+      totalCount: null,
+      uId: this.volunteerMasterForm.value.uId,
+      vCount: null,
+      vId: Number(this.volunteerMasterForm.value.vId),
+      vRNumber: this.volunteerMasterForm.value.vRNumber,
+    }
+    this.volunteerService.addVolunteerMaster(data)
+      .subscribe((res: any) => {
+        console.log(res)
+      })
+
+    this.route.navigate(['/app/manage-camp/voluteer-master'])
+  }
 
 
 }

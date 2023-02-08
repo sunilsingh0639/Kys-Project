@@ -15,7 +15,7 @@ export class PlansComponent {
   allPlans: any
   selectedPlanId: string = ''
 
-  constructor(private planSer: PlansService, private _fb: FormBuilder, private bookSer: BooksService) {
+  constructor(private planService: PlansService, private _fb: FormBuilder, private bookService: BooksService) {
     this.planForm = this._fb.group({
       searchKey : ["",[Validators.required]],
       name: ["", [Validators.required]],
@@ -36,7 +36,7 @@ export class PlansComponent {
 
   ///////// get book list
   getBookLists() {
-    this.bookSer.getBookList()
+    this.bookService.getBookList()
       .subscribe((res: any) => {
         console.log(res)
         this.allBooks = res
@@ -44,7 +44,7 @@ export class PlansComponent {
   }
   ///////// get plan list
   getPlanLists() {
-    this.planSer.getPlanList()
+    this.planService.getPlanList()
       .subscribe((res: any) => {
         console.log(res)
         this.allPlans = res
@@ -93,14 +93,14 @@ export class PlansComponent {
         _id: this.allPlans?.data[this.editSelected]._id
       }
 
-      this.planSer.editPlan(plan)
+      this.planService.editPlan(plan)
         .subscribe((res: any) => {
           console.log(res);
           this.getPlanLists();
         })
     }
     else {
-      this.planSer.addNewPlan(this.planForm.value)
+      this.planService.addNewPlan(this.planForm.value)
         .subscribe((res: any) => {
           console.log(res);
           this.getPlanLists();
@@ -112,7 +112,7 @@ export class PlansComponent {
 
   ///////// delete plan
   deletePlan() {
-    this.planSer.deletePlanById(this.selectedPlanId)
+    this.planService.deletePlanById(this.selectedPlanId)
       .subscribe((res: any) => {
         console.log(res)
         this.getPlanLists();
