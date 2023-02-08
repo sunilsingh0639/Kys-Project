@@ -1,0 +1,103 @@
+.textcolor {
+    background-color: #e5e5e5;
+}
+
+.text {
+    font-style: 20px Mada, sans-serif;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+mat-card {
+    background-color: #f8f9fa;
+}
+
+.background {
+    margin-top: -16px;
+}
+
+.card {
+    background-color: white;
+    margin-top: -16px;
+    padding-top: 13px;
+}
+
+select {
+    width: 90%;
+}
+
+.search-btn {
+    background-color: #de651a;
+    margin: 0px 0px 0px 10px;
+    padding: 3px 10px;
+    color: white;
+    border: 2px;
+    border-radius: 5px;
+}
+
+.search-btn:hover {
+    background-color: #b64804;
+}
+
+.reset-btn {
+    color: white;
+    padding: 3px 10px;
+    border: 2px;
+    border-radius: 5px;
+}
+
+
+
+
+@media only screen and (max-width :960px) {
+    .table_head {
+        display: none;
+    }
+
+    .clom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+th:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+th,
+td {
+    border-bottom: 2px solid #f8f9fa
+}
+
+td {
+    padding: 3px;
+    // border-bottom: none;
+    padding: 2%;
+}
+
+.clom {
+    background-color: white;
+}
+
+.clom:hover {
+    background-color: lightgray;
+}
+
+.active {
+    background-color: #7bb13c;
+    color: white;
+    min-width: 80px;
+    border-radius: 10rem;
+}
+
+.info {
+    border: none;
+    background-color: #de651a;
+    color: white;
+}
+
+.info:hover {
+    background-color: #7bb13c;
+}

@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -22,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     MatSelectModule,
     MatSortModule,
+    MatCardModule,
   ],
   exports: [
     MatTableModule,
@@ -30,6 +32,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     MatSelectModule,
     MatSortModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }
