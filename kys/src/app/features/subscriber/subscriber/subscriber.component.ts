@@ -7,7 +7,8 @@ import { SubscriberService } from 'src/app/core/services/subscriber.service';
   templateUrl: './subscriber.component.html',
   styleUrls: ['./subscriber.component.scss']
 })
-export class subscriberComponent {
+export class SubscriberComponent {
+  
   constructor(private service: SubscriberService, private fb: FormBuilder) {
 
     this.display()
