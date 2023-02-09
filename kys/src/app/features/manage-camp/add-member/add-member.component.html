@@ -1,19 +1,20 @@
 <div class="row" id="subscribe">
-    Edit Volunteer Details
+    Enter New Member Details
 </div>
 <div id="admin">
     <div id="details">
-        Edit Volunteer Deatils
+        Enter New Member Deatils
     </div>
     <div id="form" class="card-body">
-        <form [formGroup]="volunteerMasterForm">
+        <form [formGroup]="memberMasterForm">
             <div class="row">
                 <div class="col-md-3 form-group">
                     <label for=""><b>Enrollment Number</b></label>
                     <input type="text" appOnlyDigit (blur)="getValue()" class="form-control"
-                        placeholder="Enrollment Number" name="vId" formControlName="vId" maxlength="12"
+                        placeholder="Enrollment Number" name="vId" formControlName="vId"
+                        maxlength="12"
                         [ngClass]="{ 'is-invalid':form['vId'].invalid && form['vId'].touched}"
-                        [ngClass]="{ 'is-valid':form['vId'].valid && valid?.status == 1}">
+                        [ngClass]="{ 'is-valid':form['vId'].valid}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Volunteer Registration Number</b></label>
@@ -23,8 +24,8 @@
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>AADHAR Number</b></label>
-                    <input type="text" appOnlyDigit class="form-control" placeholder="AADHAR Number" name="uId"
-                        maxlength="12" formControlName="uId" [ngClass]="{ 'is-valid':form['uId'].valid}"
+                    <input type="text" appOnlyDigit class="form-control" placeholder="AADHAR Number" name="uId" maxlength="12"
+                        formControlName="uId" [ngClass]="{ 'is-valid':form['uId'].valid}"
                         [ngClass]="{ 'is-invalid':form['uId'].invalid && form['uId'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
@@ -66,9 +67,8 @@
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Mobile (Secondary)</b></label>
-                    <input type="text" appOnlyDigit class="form-control" placeholder="Mobile" name="secondaryMobile"
-                        maxlength="10" formControlName="secondaryMobile"
-                        [ngClass]="{ 'is-valid':form['secondaryMobile'].valid}"
+                    <input type="text" appOnlyDigit class="form-control" placeholder="Mobile" name="secondaryMobile" maxlength="10"
+                        formControlName="secondaryMobile" [ngClass]="{ 'is-valid':form['secondaryMobile'].valid}"
                         [ngClass]="{ 'is-invalid':form['secondaryMobile'].invalid && form['secondaryMobile'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
@@ -88,8 +88,8 @@
                         <div class="row pt-4">
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Address Line 1</b></label>
-                                <input type="text" class="form-control" placeholder="Building / Society / House No."
-                                    maxlength="16" name="addressLine1" formControlName="addressLine1"
+                                <input type="text" class="form-control" placeholder="Building / Society / House No." maxlength="16"
+                                    name="addressLine1" formControlName="addressLine1"
                                     [ngClass]="{ 'is-invalid':c['addressLine1'].invalid && c['addressLine1'].touched}"
                                     [ngClass]="{ 'is-valid':c['addressLine1'].valid}">
                             </div>
@@ -102,8 +102,8 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Locality</b></label>
-                                <input type="text" class="form-control" placeholder="Landmark" name="locality"
-                                    maxlength="16" formControlName="locality"
+                                <input type="text" class="form-control" placeholder="Landmark" name="locality" maxlength="16"
+                                    formControlName="locality"
                                     [ngClass]="{ 'is-invalid':c['locality'].invalid && c['locality'].touched}"
                                     [ngClass]="{ 'is-valid':c['locality'].valid}">
                             </div>
@@ -147,8 +147,8 @@
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Pin</b></label>
-                                <input type="text" appOnlyDigit class="form-control" placeholder="Pin" name="pin"
-                                    maxlength="6" formControlName="pin"
+                                <input type="text" appOnlyDigit class="form-control" placeholder="Pin" name="pin" maxlength="6"
+                                    formControlName="pin"
                                     [ngClass]="{ 'is-invalid':c['pin'].invalid && c['pin'].touched}"
                                     [ngClass]="{ 'is-valid':c['pin'].valid}">
                             </div>
@@ -163,8 +163,8 @@
                         <div class="row pt-4">
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Address Line 1</b></label>
-                                <input type="text" class="form-control" placeholder="Building / Society / House No."
-                                    maxlength="16" name="addressLine1" formControlName="addressLine1"
+                                <input type="text" class="form-control" placeholder="Building / Society / House No." maxlength="16"
+                                    name="addressLine1" formControlName="addressLine1"
                                     [ngClass]="{ 'is-invalid':p['addressLine1'].invalid && p['addressLine1'].touched}"
                                     [ngClass]="{ 'is-valid':p['addressLine1'].valid}">
                             </div>
@@ -177,16 +177,15 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Locality</b></label>
-                                <input type="text" class="form-control" placeholder="Landmark" name="locality"
-                                    maxlength="16" formControlName="locality"
+                                <input type="text" class="form-control" placeholder="Landmark" name="locality" maxlength="16"
+                                    formControlName="locality"
                                     [ngClass]="{ 'is-invalid':p['locality'].invalid && p['locality'].touched}"
                                     [ngClass]="{ 'is-valid':p['locality'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>V&P/City</b></label>
                                 <input type="text" class="form-control" placeholder="City" name="city"
-                                    formControlName="city"
-                                    [ngClass]="{ 'is-invalid':p['city'].invalid && p['city'].touched}" maxlength="16"
+                                    formControlName="city" [ngClass]="{ 'is-invalid':p['city'].invalid && p['city'].touched}" maxlength="16"
                                     [ngClass]="{ 'is-valid':p['city'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
@@ -209,22 +208,19 @@
                             <div class="col-md-2 form-group">
                                 <label for=""><b>V&P/City</b></label>
                                 <input type="text" class="form-control" placeholder="City" name="city"
-                                    formControlName="city"
-                                    [ngClass]="{ 'is-invalid':p['city'].invalid && p['city'].touched}" maxlength="16"
+                                    formControlName="city" [ngClass]="{ 'is-invalid':p['city'].invalid && p['city'].touched}" maxlength="16"
                                     [ngClass]="{ 'is-valid':p['city'].valid}">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Tehsil</b></label>
                                 <input type="text" class="form-control" placeholder="Tehsil" name="tehsil"
-                                    formControlName="tehsil"
-                                    [ngClass]="{ 'is-invalid':p['tehsil'].invalid && p['tehsil'].touched}"
-                                    maxlength="16" [ngClass]="{ 'is-valid':p['tehsil'].valid}">
+                                    formControlName="tehsil" [ngClass]="{ 'is-invalid':p['tehsil'].invalid && p['tehsil'].touched}" maxlength="16"
+                                    [ngClass]="{ 'is-valid':p['tehsil'].valid}">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Pin</b></label>
-                                <input type="text" appOnlyDigit class="form-control" placeholder="Pin" name="pin"
-                                    maxlength="6" formControlName="pin"
-                                    [ngClass]="{ 'is-invalid':p['pin'].invalid && p['pin'].touched}"
+                                <input type="text" appOnlyDigit class="form-control" placeholder="Pin" name="pin" maxlength="6"
+                                    formControlName="pin" [ngClass]="{ 'is-invalid':p['pin'].invalid && p['pin'].touched}"
                                     [ngClass]="{ 'is-valid':p['pin'].valid}">
                             </div>
                         </div>
@@ -233,9 +229,7 @@
                 <div class="row mt-4">
                     <div class="col-md-12" id="action_btn">
                         <button id="cancel" routerLink="/app/manage-camp/voluteer-master">Cancel</button>
-                        <button id="submit"
-                            [disabled]="volunteerMasterForm.invalid || cAddressForm.invalid || pAddressForm.invalid"
-                            (click)="updateVolunteerMaster()">Update</button>
+                        <button id="submit" [disabled]="memberMasterForm.invalid || cAddressForm.invalid || pAddressForm.invalid" (click)="addMemberMaster()">Submit</button>
                     </div>
                 </div>
             </div>

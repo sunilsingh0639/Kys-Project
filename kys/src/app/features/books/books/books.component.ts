@@ -16,12 +16,16 @@ export class BooksComponent {
 
   constructor(private fb: FormBuilder, private bookSerVice: BooksService) {
     this.bookForm = this.fb.group({
-      searchKey: ["", [Validators.required,]],
+      searchKey: ["", [Validators.required]],
       bookName: ["", [Validators.required]],
       pricing: ["", [Validators.required]],
       category: ["", [Validators.required]],
       image: ["", [Validators.required]],
     })
+  }
+
+  get form(){
+    return this.bookForm.controls
   }
 
 

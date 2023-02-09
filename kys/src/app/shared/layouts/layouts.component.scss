@@ -3,7 +3,7 @@
 
     #navbar {
         background: linear-gradient(133.87deg, #dc3545 0%, #1d4fa2 50%, #c5198c 100%);
-        padding: 15px 10px;
+        padding: 15px 30px;
     }
 
     .container-fluid {
@@ -17,10 +17,16 @@
             border: 2px solid white;
             opacity: 70%;
         }
+        @media screen and (min-width: 1120px) {
+            #navbarCollapse{
+                display: flex;
+                justify-content: flex-end;
+            }
+            
+        }
 
         div {
             ul {
-
                 li {
                     a {
                         font-size: 16px;
@@ -39,8 +45,7 @@
                         color: white;
                         opacity: 100%;
                     }
-
-                    .chalu:hover {
+                    .chalu:hover{
                         color: white;
                         opacity: 100%;
                     }
@@ -68,13 +73,12 @@
                         }
 
                         a:hover {
-                            background-color: #b32082;
+                            background-color: #b32082 ;
                             color: white;
                             opacity: 90%;
                         }
-
-                        .in_chalu {
-                            background-color: #4f16aa;
+                        .in_chalu{
+                            background-color: #4f16aa ;
                             color: white;
                             opacity: 90%;
                         }

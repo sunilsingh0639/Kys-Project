@@ -9,11 +9,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { OnlyDigitDirective } from 'src/app/directives/only-digit.directive';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [OnlyDigitDirective],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -32,7 +33,8 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    OnlyDigitDirective
   ]
 })
 export class SharedModule { }

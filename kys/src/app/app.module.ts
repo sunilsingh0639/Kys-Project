@@ -9,6 +9,7 @@ import { LayoutsComponent } from './shared/layouts/layouts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorCatchingInterceptor } from './core/intercepters/error-catching.interceptor';
 import { TokenInterceptor } from './core/intercepters/token.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -16,7 +17,7 @@ import { TokenInterceptor } from './core/intercepters/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutsComponent
+    LayoutsComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,8 +25,10 @@ import { TokenInterceptor } from './core/intercepters/token.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   exports: [
+    MatSnackBarModule
   ],
   providers: [
     {

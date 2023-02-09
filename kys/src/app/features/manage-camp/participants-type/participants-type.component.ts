@@ -16,10 +16,13 @@ export class ParticipantsTypeComponent {
 
   constructor(private fb: FormBuilder, private participantTypeService: ParticipantsTypeListService) {
     this.participantsTypeForm = this.fb.group({
-      description: ["", [Validators.required]],
+      description: ["", [Validators.required , Validators.minLength(5)]],
     })
   }
 
+  get form(){
+    return this.participantsTypeForm.controls
+  }
 
   getParticipantsType(): void {
     this.participantTypeService.getParticipantsTypeList()

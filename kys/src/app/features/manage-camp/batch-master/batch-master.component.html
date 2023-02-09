@@ -58,11 +58,13 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="col-form-label">Batch Id</label>
-                            <input type="text" class="form-control" name="batchId" formControlName="batchId">
+                            <input type="text" appOnlyDigit class="form-control" name="batchId" formControlName="batchId" [ngClass]="{ 'is-valid':form['batchId'].valid}"
+                            [ngClass]="{ 'is-invalid':form['batchId'].invalid && form['batchId'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Camp Number</label>
-                            <select type="select" class="form-control" name="campNumber" formControlName="campNumber">
+                            <select type="select" class="form-control" name="campNumber" formControlName="campNumber" [ngClass]="{ 'is-valid':form['campNumber'].valid}"
+                            [ngClass]="{ 'is-invalid':form['campNumber'].invalid && form['campNumber'].touched}">
                                 <option *ngFor="let camp of allCampIds?.data"
                                     [value]="camp.id + '-' + camp.city + '-' + camp.dist + '-' + camp.state + '-' + camp.year">
                                     {{camp.id + '-' + camp.city + '-' + camp.dist + '-' + camp.state + '-' + camp.year}}
@@ -71,11 +73,13 @@
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Batch Creation Date</label>
-                            <input type="date" class="form-control" name="createDate" formControlName="createDate">
+                            <input type="date" class="form-control" name="createDate" formControlName="createDate" [ngClass]="{ 'is-valid':form['createDate'].valid}"
+                            [ngClass]="{ 'is-invalid':form['createDate'].invalid && form['createDate'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Count</label>
-                            <input type="text" class="form-control" name="count" formControlName="count">
+                            <input type="text" appOnlyDigit class="form-control" name="count" formControlName="count" [ngClass]="{ 'is-valid':form['count'].valid}"
+                            [ngClass]="{ 'is-invalid':form['count'].invalid && form['count'].touched}">
                         </div>
                     </div>
                     <div class="modal-footer mb-3">
