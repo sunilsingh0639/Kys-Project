@@ -24,8 +24,9 @@
 
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                             formControlName="admin">
-                            <option selected>Select a Admin</option>
-                            <option value="1">One</option>
+                            <option></option>
+                            <option *ngFor="let admin of allAdmin?.data" [value]="admin.name">{{admin.name}}</option>
+                           
 
                         </select>
 
@@ -42,9 +43,8 @@
 
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                             formControlName="state">
-                            <option selected>State</option>
-                            <option value="1">One</option>
-
+                            <option></option>
+                            <option *ngFor="let state of allStates?.data" [value]="state">{{state}}</option>
                         </select>
 
                     </div>
@@ -59,8 +59,8 @@
 
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                             formControlName="district">
-                            <option selected>District</option>
-                            <option value="1">One</option>
+                            <option></option>
+                            <option *ngFor="let dist of allDistrict?.data" [value]="dist">{{dist}}</option>
 
                         </select>
 
@@ -77,8 +77,9 @@
 
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                             formControlName="book">
-                            <option selected>Book</option>
-                            <option value="1">One</option>
+                            <option></option>
+                            <option *ngFor="let book of allBook?.data" [value]="book.bookName">{{book.bookName}}</option>
+                           
 
                         </select>
 
@@ -125,9 +126,9 @@
 
             <div class="col-md-12" style="text-align: end;">
 
-                <button type="button" class="btn btn-secondary" style="background-color: black;">Reset</button>
+                <button type="reset" class="btn btn-secondary" (click)="resetForm()" style="background-color: black;">Reset</button>
 
-                <button type="button" class="btn btn-primary" style="margin-left: 10px;">Search</button>
+                <button type="button" class="btn btn-primary" (click)="searchData()" style="margin-left: 10px;">Search</button>
 
             </div>
 
