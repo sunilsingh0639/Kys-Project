@@ -65,16 +65,20 @@
                         <div class="mb-3">
                             <label class="col-form-label">Name</label>
                             <input type="text" class="form-control" name="bookName" formControlName="bookName"
-                                placeholder="Enter Book Name" required minlength="5" maxlength="30"
-                                pattern="[a-zA-Z ]*">
+                                placeholder="Enter Book Name"  minlength="5" maxlength="30"
+                                [ngClass]="{ 'is-valid':form['bookName'].valid}"
+                            [ngClass]="{ 'is-invalid':form['bookName'].invalid && form['bookName'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Price</label>
-                            <input type="number" class="form-control" name="pricing" formControlName="pricing">
+                            <input type="text" appOnlyDigit class="form-control" name="pricing" formControlName="pricing"
+                            [ngClass]="{ 'is-valid':form['pricing'].valid}"
+                            [ngClass]="{ 'is-invalid':form['pricing'].invalid && form['pricing'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Category</label>
-                            <select type="select" class="form-control" name="category" formControlName="category">
+                            <select type="select" class="form-control" name="category" formControlName="category" [ngClass]="{ 'is-valid':form['category'].valid}"
+                            [ngClass]="{ 'is-invalid':form['category'].invalid && form['category'].touched}">
                                 <option value="साहित्य">साहित्य</option>
                                 <option value="programming">programming</option>
                                 <option value="general">general</option>
@@ -84,7 +88,8 @@
                         <div class="mb-3">
                             <label class="col-form-label">Image</label>
                             <input type="file" (change)="onFileChange($event)" class="form-control" name="image"
-                                formControlName="image">
+                                formControlName="image" [ngClass]="{ 'is-valid':form['image'].valid}"
+                                [ngClass]="{ 'is-invalid':form['image'].invalid && form['image'].touched}">
                         </div>
                     </div>
                     <div class="modal-footer">

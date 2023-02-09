@@ -3,10 +3,11 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { VolunteerMasterService } from 'src/app/core/services/volunteer-master.service';
+import { MemberMasterService } from 'src/app/core/services/member-master.service';
 
 
-export interface VolunteerMasterTable {
+
+export interface MemberMasterTable {
   fullName: string;
   dob: string;
   city: string;
@@ -14,13 +15,13 @@ export interface VolunteerMasterTable {
   age: number;
   mobile: number;
   vId: number;
-  count: number;
 }
 
+
 @Component({
-  selector: 'app-volunteer-master',
-  templateUrl: './volunteer-master.component.html',
-  styleUrls: ['./volunteer-master.component.scss'],
+  selector: 'app-member-master',
+  templateUrl: './member-master.component.html',
+  styleUrls: ['./member-master.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -29,51 +30,50 @@ export interface VolunteerMasterTable {
     ]),
   ]
 })
-export class VolunteerMasterComponent {
+export class MemberMasterComponent {
 
+ 
 
-  allisVolunteer: any;
+  allMemberMaster: any;
   @ViewChild('paginator') paginator!: MatPaginator;
   public dataSource!: MatTableDataSource<any>
-  displayedColumns: string[] = ['vId', 'fullName', 'dob', 'age', 'mobile', 'city', 'district', 'count', 'batch']
+  displayedColumns: string[] = ['vId', 'fullName', 'dob', 'age', 'mobile', 'city', 'district']
   expandedElement: any
   columnsToDisplayWithExpand: string[] = [...this.displayedColumns, 'expand']
-  selectedVolunteerData: any;
+  selectedMemberMasterData: any;
 
 
-  constructor(private volunteerService: VolunteerMasterService) {
-    this.isVolunteerList();
+  constructor(private memberMasterService: MemberMasterService) {
+    this.getMemberMasterList();
   }
 
-  isVolunteerList() {
-    this.volunteerService.isVolunteerList()
+  getMemberMasterList() {
+    this.memberMasterService.getMemberMasterList()
       .subscribe((res: any) => {
         console.log(res)
-        this.allisVolunteer = res
-        this.expandedElement = this.allisVolunteer?.data
-        this.dataSource = new MatTableDataSource(this.allisVolunteer?.data);
+        this.allMemberMaster = res
+        this.expandedElement = this.allMemberMaster?.data
+        this.dataSource = new MatTableDataSource(this.allMemberMaster?.data);
         this.dataSource.paginator = this.paginator
       })
   }
 
-  editVolunteer(i: number) {
-    this.volunteerService.editVolunteerDetails(this.allisVolunteer?.data[i]._id)
+  editMemberMaster(i: number) {
+    this.memberMasterService.editMemberDetails(this.allMemberMaster?.data[i]._id)
       .subscribe(res => {
-        // console.log(res)
-        this.selectedVolunteerData = res
-        this.volunteerService.setVolunteerData(this.selectedVolunteerData)
+        this.selectedMemberMasterData = res
+        this.memberMasterService.setMemberMasterData(this.selectedMemberMasterData)
       })
   }
-
 
 sortedData: any
 ////////////////////////////////////  sorting
 sortData(sort: Sort) {
   if (!sort.active || sort.direction === '') {
-    this.sortedData = this.allisVolunteer.data;
+    this.sortedData = this.allMemberMaster.data;
     return;
   }
-  this.sortedData = this.allisVolunteer.data.sort((a: any, b: any) => {
+  this.sortedData = this.allMemberMaster.data.sort((a: any, b: any) => {
     let isAsc = sort.direction === 'asc';
     switch (sort.active) {
       case 'fullName':

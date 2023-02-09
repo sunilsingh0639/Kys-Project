@@ -28,6 +28,9 @@ export class CampTypeComponent {
       description: ["", [Validators.required]],
     })
   }
+  get form(){
+    return this.campTypeForm.controls
+  }
 
 
   getCampType(): void {

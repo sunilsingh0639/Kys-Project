@@ -1,0 +1,89 @@
+#subscribe {
+    background: #e5e5e5;
+    color: black;
+    padding: 15px 35px;
+    font-size: 20px;
+}
+
+#admin {
+    padding: 0 16px 4px 16px !important;
+    margin: 0;
+    background-color: rgb(248, 247, 247);
+
+    #details {
+        font-size: 16px;
+        padding: 20px;
+        background-color: white;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    #form {
+        font-size: 16px;
+        background-color: white;
+        padding: 24px;
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+
+            .form-group {
+                padding: 0 15px;
+                margin: 0 0 20px;
+
+                label {
+                    margin: 0 0 8px;
+                    font-family: sans-serif;
+                }
+
+                .form-control {
+                    padding: 6px 12px;
+                    border: 1px solid #ddd;
+                    box-shadow: none;
+                    color: #333;
+                    font-size: 15px;
+                    height: 42px;
+                    width: 162px;
+                    display: block;
+                    width: 100%;
+                }
+
+            }
+            .row{
+                #current_Address , #permanent_Address{
+                    h3{
+                        b{
+                            color: #de651a !important;
+                            font-size: 30px;
+                        }
+                    }
+                }
+                #action_btn{
+                    text-align: right ;
+                    font-family: sans-serif;
+                    margin-left: -30px;
+                    #cancel{
+                        color: white;
+                        border: none;
+                        padding: 8px 16px;
+                        background-color: #2196F3;
+                        height: 41px;
+                        width: 85px;
+                        border-radius: 5px;
+                    }
+                    #submit{
+                        color: white;
+                        height: 41px;
+                        width: 85px;
+                        border: none;
+                        border-radius: 5px;
+                        padding: 8px 16px;
+                        margin: 0 0 0 5px;
+                        background-color: #689F38;
+                    }
+                }
+            }
+        }
+    }
+}

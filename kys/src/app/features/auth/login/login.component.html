@@ -15,14 +15,16 @@
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 form_main">
             <div class="form_cabin">
                 <h2 style="padding: 0 20px;">LOGIN TO YOUR ACCOUNT</h2>
-                <form [formGroup]="reactiveForm" class="row">
+                <form [formGroup]="loginForm" class="row">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email"
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" [ngClass]="{ 'is-valid':form['email'].valid}"
+                        [ngClass]="{ 'is-invalid':form['email'].invalid && form['email'].touched}"
                             formControlName="email">
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control" id="password" placeholder="Enter password"
-                            name="password" formControlName="password">
+                            name="password" formControlName="password" [ngClass]="{ 'is-valid':form['password'].valid}"
+                            [ngClass]="{ 'is-invalid':form['password'].invalid && form['password'].touched}">
                     </div>
                     <div class="mb-3">
                         <button type="submit" (click)="onLogin()">Login</button>

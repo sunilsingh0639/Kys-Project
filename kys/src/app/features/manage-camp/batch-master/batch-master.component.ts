@@ -42,6 +42,9 @@ export class BatchMasterComponent {
       createDate: ["", [Validators.required]],
     })
   }
+  get form(){
+    return this.batchMasterForm.controls
+  }
 
   ngOnInit(): void {
     this.getCampIdList();

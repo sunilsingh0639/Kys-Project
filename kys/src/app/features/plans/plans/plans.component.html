@@ -59,16 +59,20 @@
                         <div class="mb-3">
                             <label class="col-form-label">Name</label>
                             <input type="text" class="form-control" name="name" formControlName="name"
-                                placeholder="Enter Book Name" required minlength="5" maxlength="30"
-                                pattern="[a-zA-Z ]*">
+                                placeholder="Enter Book Name"  minlength="5" maxlength="30"   
+                                 [ngClass]="{ 'is-valid':form['name'].valid}"
+                                [ngClass]="{ 'is-invalid':form['name'].invalid && form['name'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Duration</label>
-                            <input type="number" class="form-control" name="duration" formControlName="duration">
+                            <input type="text" appOnlyDigit class="form-control" name="duration" formControlName="duration"    [ngClass]="{ 'is-valid':form['duration'].valid}"
+                            [ngClass]="{ 'is-invalid':form['duration'].invalid && form['duration'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Book</label>
-                            <select type="select" class="form-control" name="books" formControlName="books">
+                            <select type="select" class="form-control" name="books" formControlName="books"
+                            [ngClass]="{ 'is-valid':form['books'].valid}"
+                            [ngClass]="{ 'is-invalid':form['books'].invalid && form['books'].touched}">
                                 <option value="">Choose Book</option>
                                 <option *ngFor="let book of allBooks?.data" [value]="book.bookName">
                                     {{book.bookName}}
@@ -77,11 +81,14 @@
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Price</label>
-                            <input type="number" class="form-control" name="price" formControlName="price">
+                            <input type="number" class="form-control" name="price" formControlName="price"
+                            [ngClass]="{ 'is-valid':form['price'].valid}"
+                            [ngClass]="{ 'is-invalid':form['price'].invalid && form['price'].touched}">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">Description</label>
-                            <textarea class="form-control" name="description" formControlName="description" rows="4">
+                            <textarea class="form-control" name="description" formControlName="description" rows="4"    [ngClass]="{ 'is-valid':form['description'].valid}"
+                            [ngClass]="{ 'is-invalid':form['description'].invalid && form['description'].touched}">
                             </textarea>
                         </div>
                     </div>
