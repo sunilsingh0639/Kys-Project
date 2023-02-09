@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { VolunteerMasterService } from 'src/app/core/services/volunteer-master.service';
+import { MemberMasterService } from 'src/app/core/services/member-master.service';
 import { ValidateEmail } from 'src/app/directives/emailValidator';
 import { ValidateMobile } from 'src/app/directives/mobileValidator';
 
 @Component({
-  selector: 'app-volunteer-master-add',
-  templateUrl: './volunteer-master-add.component.html',
-  styleUrls: ['./volunteer-master-add.component.scss']
+  selector: 'app-add-member',
+  templateUrl: './add-member.component.html',
+  styleUrls: ['./add-member.component.scss']
 })
-export class VolunteerMasterAddComponent {
+export class AddMemberComponent {
 
 
-  volunteerMasterForm!: FormGroup
+  memberMasterForm!: FormGroup
   allStates: any;
   allCamps: any;
   allDistrcicts0: any;
@@ -23,7 +23,7 @@ export class VolunteerMasterAddComponent {
 
 
 
-  constructor(private fb: FormBuilder, private volunteerService: VolunteerMasterService,
+  constructor(private fb: FormBuilder, private addMemberService: MemberMasterService,
     private route: Router) {
     this.initializeForm();
     this.stateList();
@@ -34,7 +34,7 @@ export class VolunteerMasterAddComponent {
 
 
   initializeForm() {
-    this.volunteerMasterForm = this.fb.group({
+    this.memberMasterForm = this.fb.group({
       vId: ["", [Validators.required]],
       vRNumber: ["", [Validators.required]],
       uId: ["", [Validators.required]],
@@ -53,7 +53,7 @@ export class VolunteerMasterAddComponent {
   }
 
   get address() {
-    return this.volunteerMasterForm.controls['address'] as FormArray;
+    return this.memberMasterForm.controls['address'] as FormArray;
   }
 
 
@@ -72,7 +72,7 @@ export class VolunteerMasterAddComponent {
     let state = this.cAddressForm.controls['state']
     state.valueChanges
       .subscribe(res => {
-        this.volunteerService.getDistrictList(res)
+        this.addMemberService.getDistrictList(res)
           .subscribe((res: any) => {
             this.allDistrcicts0 = res
           })
@@ -93,7 +93,7 @@ export class VolunteerMasterAddComponent {
     let state = this.pAddressForm.controls['state']
     state.valueChanges
       .subscribe(res => {
-        this.volunteerService.getDistrictList(res)
+        this.addMemberService.getDistrictList(res)
           .subscribe((res: any) => {
             this.allDistrcicts1 = res
           })
@@ -102,20 +102,20 @@ export class VolunteerMasterAddComponent {
 
 
   stateList() {
-    this.volunteerService.getStatesList()
+    this.addMemberService.getStatesList()
       .subscribe((res: any) => {
         this.allStates = res
       })
   }
 
   campIdsList() {
-    this.volunteerService.getCampIdList()
+    this.addMemberService.getCampIdList()
       .subscribe((res: any) => {
         this.allCamps = res
       })
   }
 
-  addVolunteerMaster() {
+  addMemberMaster() {
     const data = {
       address: [
         {
@@ -141,38 +141,38 @@ export class VolunteerMasterAddComponent {
           tehsil: this.pAddressForm.value.tehsil,
         }
       ],
-      age: this.volunteerMasterForm.value.age,
+      age: this.memberMasterForm.value.age,
       batchId: null,
       campId: null,
-      dob: new Date(this.volunteerMasterForm.value.dob).getTime(),
-      firstName: this.volunteerMasterForm.value.firstName,
-      isVolunteer: true,
-      lastName: this.volunteerMasterForm.value.middleName,
-      middleName: this.volunteerMasterForm.value.lastName,
-      mobile: this.volunteerMasterForm.value.mobile,
+      dob: new Date(this.memberMasterForm.value.dob).getTime(),
+      firstName: this.memberMasterForm.value.firstName,
+      isVolunteer: false,
+      lastName: this.memberMasterForm.value.middleName,
+      middleName: this.memberMasterForm.value.lastName,
+      mobile: this.memberMasterForm.value.mobile,
       newCount: null,
       oldCount: null,
-      primaryEmail: this.volunteerMasterForm.value.primaryEmail,
+      primaryEmail: this.memberMasterForm.value.primaryEmail,
       secondaryEmail: "",
-      secondaryMobile: this.volunteerMasterForm.value.secondaryMobile,
+      secondaryMobile: this.memberMasterForm.value.secondaryMobile,
       totalCount: null,
-      uId: this.volunteerMasterForm.value.uId,
+      uId: this.memberMasterForm.value.uId,
       vCount: null,
-      vId: Number(this.volunteerMasterForm.value.vId),
-      vRNumber: this.volunteerMasterForm.value.vRNumber,
+      vId: Number(this.memberMasterForm.value.vId),
+      vRNumber: this.memberMasterForm.value.vRNumber,
     }
-    this.volunteerService.addVolunteerMaster(data)
+    this.addMemberService.addMemberMaster(data)
       .subscribe((res: any) => {
         console.log(res)
       })
 
-    this.route.navigate(['/app/manage-camp/voluteer-master'])
+    this.route.navigate(['/app/manage-camp/member-master'])
   }
 
 
   getValue() {
-    let enrollId = this.volunteerMasterForm.value.vId
-    this.volunteerService.validateEnrollmentNumber(enrollId)
+    let enrollId = this.memberMasterForm.value.vId
+    this.addMemberService.validateEnrollmentNumber(enrollId)
       .subscribe((res: any) => {
         console.log(res)
 
@@ -181,7 +181,7 @@ export class VolunteerMasterAddComponent {
 
   ////////////////////////////// for ng class
   get form() {
-    return this.volunteerMasterForm.controls;
+    return this.memberMasterForm.controls;
   }
   get c() {
     return this.cAddressForm.controls;

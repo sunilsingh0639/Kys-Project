@@ -12,6 +12,10 @@ import { CampMasterComponent } from './camp-master/camp-master.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { MemberMasterComponent } from './member-master/member-master.component';
+import { EditMemberComponent } from './edit-member/edit-member.component';
+import { AddMemberComponent } from './add-member/add-member.component';
+import { MemberMovementComponent } from './member-movement/member-movement.component';
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
     ParticipantsTypeComponent,
     VolunteerMasterAddComponent,
     VolunteerMasterComponent,
-    CampMasterComponent
+    CampMasterComponent,
+    MemberMasterComponent,
+    EditMemberComponent,
+    AddMemberComponent,
+    MemberMovementComponent
   ],
   imports: [
     CommonModule,

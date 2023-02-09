@@ -28,7 +28,8 @@
                     <td>{{member.updateDate | date}}</td>
                     <td id="media_special">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            (click)="editParticipantsType(i)" style="border: none; color: white; background-color: green;">
+                            (click)="editParticipantsType(i)"
+                            style="border: none; color: white; background-color: green;">
                             <i class="fa-solid fa-pen"></i></button>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
                             (click)="selectedParticipantsTypeId=member._id"
@@ -47,7 +48,8 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;" class="modal-title fs-5" id="exampleModalLabel">Type Details</h1>
+                        <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;"
+                            class="modal-title fs-5" id="exampleModalLabel">Type Details</h1>
                         <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -55,7 +57,9 @@
                         <div class="mb-3">
                             <label class="col-form-label">Name</label>
                             <input type="text" class="form-control" name="description" formControlName="description"
-                                placeholder="Enter Name" required minlength="5" maxlength="30" pattern="[a-zA-Z ]*">
+                                placeholder="Enter Name" maxlength="30" pattern="[a-zA-Z ]*"
+                                [ngClass]="{ 'is-valid':form['description'].valid}"
+                                [ngClass]="{ 'is-invalid':form['description'].invalid && form['description'].touched}">
                         </div>
                     </div>
                     <div class="modal-footer mb-3">
@@ -84,7 +88,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
                         <i class="fa-solid fa-xmark"></i> No</button>
-                    <button (click)="deleteParticipantsType()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                    <button (click)="deleteParticipantsType()" type="submit" class="btn btn-primary"
+                        data-bs-dismiss="modal">
                         <i class="fa-solid fa-check"></i> Yes</button>
                 </div>
             </div>

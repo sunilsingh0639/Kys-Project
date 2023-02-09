@@ -9,14 +9,16 @@ export const ApiEnpoints = {
     participantsType : ()  => `http://103.224.246.103:3004/camp/participants-type/`,
     campMaster : () => `http://103.224.246.103:3004/camp/camp-master/`,
     batchMaster : () => `http://103.224.246.103:3004/camp/batch-master/`,
+      /////////////// member master == volunteer master
     volunteerMaster : () => `http://103.224.246.103:3004/camp/volunteer-master/`,
     ////////////// for subscriber , manage admin , manage address === >>>  userList
+
     userList : () => `http://103.224.246.103:3004/user/list/`,
 
     subscriptionList : () => `http://103.224.246.103:3004/subscription/list/`
     
+    userList : () => `http://103.224.246.103:3004/user/list/`     
 
 
 
-    
 }

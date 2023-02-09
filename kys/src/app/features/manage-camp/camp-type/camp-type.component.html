@@ -43,90 +43,89 @@
         </div>
 
     </div>
-    <!-- <div id="mat_table">
-        <table mat-table [dataSource]="allCampTypes?.data" class="mat-elevation-z8">
-            <ng-container matColumnDef="#">
-                <th mat-header-cell *matHeaderCellDef> # </th>
-                <td mat-cell *matCellDef="let element ; let i = index"> {{i+1}} </td>
-            </ng-container>
-            <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-            </ng-container>
-            <ng-container matColumnDef="createDate">
-                <th mat-header-cell *matHeaderCellDef>Create Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.createDate | date }} </td>
-            </ng-container>
-            <ng-container matColumnDef="updateDate">
-                <th mat-header-cell *matHeaderCellDef> UpdateDate </th>
-                <td mat-cell *matCellDef="let element"> {{element.updateDate | date}} </td>
-            </ng-container>
-            <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> Action </th>
-                <td mat-cell *matCellDef="let element">
-                    <button style="border: none; border-radius: 30px; color: white; 
+
+    <table mat-table [dataSource]="allCampTypes?.data" class="mat-elevation-z8">
+        <ng-container matColumnDef="#">
+            <th mat-header-cell *matHeaderCellDef> # </th>
+            <td mat-cell *matCellDef="let element ; let i = index"> {{i+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createDate">
+            <th mat-header-cell *matHeaderCellDef>Create Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.createDate | date }} </td>
+        </ng-container>
+        <ng-container matColumnDef="updateDate">
+            <th mat-header-cell *matHeaderCellDef> UpdateDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.updateDate | date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button style="border: none; border-radius: 30px; color: white; 
                     padding: 10px 10px 8px 10px !important;background-color: rgb(31, 99, 31); 
                     margin: 10px;"><mat-icon>mode_edit_outline</mat-icon></button>
-                    <button style="border: none; border-radius: 30px; color: black; 
+                <button style="border: none; border-radius: 30px; color: black; 
                     padding: 10px 10px 8px 10px !important;background-color: yellow; 
                     margin: 10px;"><mat-icon>delete_outline</mat-icon></button>
-                </td>
-            </ng-container>
+            </td>
+        </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div> -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div> -->
 
-    <form [formGroup]="campTypeForm">
-        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;" class="modal-title fs-5" id="exampleModalLabel">Type Details</h1>
-                        <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="col-form-label">Name</label>
-                            <input type="text" class="form-control" name="description" formControlName="description"
-                                placeholder="Enter Name" required minlength="5" maxlength="30" pattern="[a-zA-Z ]*">
-                        </div>
-                    </div>
-                    <div class="modal-footer mb-3">
-                        <button type="submit" data-bs-dismiss="modal" (click)="addNewCampType()"
-                            class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <!-- //////////////// delete popup -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+<form [formGroup]="campTypeForm">
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Confirm</h5>
-                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h1 style="margin: 0 !important; padding: 5px 8px !important; font-size: 22px !important;"
+                        class="modal-title fs-5" id="exampleModalLabel">Type Details</h1>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p> <span><i class="fa-solid fa-triangle-exclamation"></i></span>
-                        Are you sure you want to delete the selected book?</p>
+                    <div class="mb-3">
+                        <label class="col-form-label">Name</label>
+                        <input type="text" class="form-control" name="description" formControlName="description"
+                            placeholder="Enter Name" required minlength="5" maxlength="30" pattern="[a-zA-Z ]*"
+                            [ngClass]="{ 'is-valid':form['description'].valid}"
+                            [ngClass]="{ 'is-invalid':form['description'].invalid && form['description'].touched}">
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                        <i class="fa-solid fa-xmark"></i> No</button>
-                    <button (click)="deleteType()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
-                        <i class="fa-solid fa-check"></i> Yes</button>
+                <div class="modal-footer mb-3">
+                    <button type="submit" data-bs-dismiss="modal" (click)="addNewCampType()"
+                        class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
     </div>
+</form>
 
-
-
+<!-- //////////////// delete popup -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm</h5>
+                <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> <span><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    Are you sure you want to delete the selected book?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i> No</button>
+                <button (click)="deleteType()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-check"></i> Yes</button>
+            </div>
+        </div>
+    </div>
 </div>

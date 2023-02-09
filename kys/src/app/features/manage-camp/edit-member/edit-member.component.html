@@ -1,16 +1,16 @@
 <div class="row" id="subscribe">
-    Edit Volunteer Details
+    Edit Member Details
 </div>
 <div id="admin">
     <div id="details">
-        Edit Volunteer Deatils
+        Edit Member Deatils
     </div>
     <div id="form" class="card-body">
-        <form [formGroup]="volunteerMasterForm">
+        <form [formGroup]="memberMasterForm">
             <div class="row">
                 <div class="col-md-3 form-group">
                     <label for=""><b>Enrollment Number</b></label>
-                    <input type="text" appOnlyDigit (blur)="getValue()" class="form-control"
+                    <input type="text"  (blur)="getValue()" class="form-control"
                         placeholder="Enrollment Number" name="vId" formControlName="vId" maxlength="12"
                         [ngClass]="{ 'is-invalid':form['vId'].invalid && form['vId'].touched}"
                         [ngClass]="{ 'is-valid':form['vId'].valid && valid?.status == 1}">
@@ -232,10 +232,10 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-12" id="action_btn">
-                        <button id="cancel" routerLink="/app/manage-camp/voluteer-master">Cancel</button>
+                        <button id="cancel" routerLink="/app/manage-camp/member-master">Cancel</button>
                         <button id="submit"
-                            [disabled]="volunteerMasterForm.invalid || cAddressForm.invalid || pAddressForm.invalid"
-                            (click)="updateVolunteerMaster()">Update</button>
+                            [disabled]="memberMasterForm.invalid || cAddressForm.invalid || pAddressForm.invalid"
+                            (click)="updateMemberMaster()">Update</button>
                     </div>
                 </div>
             </div>
