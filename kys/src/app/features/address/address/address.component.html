@@ -1,0 +1,140 @@
+<nav class="navbar navbar-light header-page">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand">Manage Address </a>
+    </div>
+</nav>
+<div class="card">
+
+    <div class="card-header"> Search Address </div>
+
+    <form [formGroup]="addressForm">
+        <div class="card-body" style="margin: 10px;">
+
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>Admin</label>
+                        <h3></h3>
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="admin">
+                            <option></option>
+                            <option *ngFor="let admin of allAdmin?.data" [value]="admin.name">{{admin.name}}</option>
+                           
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>State</label>
+                        <h3></h3>
+
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="state">
+                            <option></option>
+                            <option *ngFor="let state of allStates?.data" [value]="state">{{state}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>District</label>
+                        <h3></h3>
+
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="district">
+                            <option></option>
+                            <option *ngFor="let dist of allDistrict?.data" [value]="dist">{{dist}}</option>
+
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>Book</label>
+                        <h3></h3>
+
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="book">
+                            <option></option>
+                            <option *ngFor="let book of allBook?.data" [value]="book.bookName">{{book.bookName}}</option>
+                           
+
+                        </select>
+
+                    </div>
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>Start Date</label>
+                        <h3></h3>
+
+                        <input type="date" class="form-control" style="height: 40px;">
+
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+
+                    <div class="form-group">
+
+                        <label>End Date</label>
+                        <h3></h3>
+
+                        <input type="date" class="form-control" style="height: 40px;">
+                    </div>
+
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+                <div>
+                    <h1></h1>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="text-align: end;">
+
+                <button type="reset" class="btn btn-secondary" (click)="resetForm()" style="background-color: black;">Reset</button>
+
+                <button type="button" class="btn btn-primary" (click)="searchData()" style="margin-left: 10px;">Search</button>
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+</div>
