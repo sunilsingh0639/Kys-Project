@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @NgModule({
   declarations: [
-    PlansComponent
+    PlansComponent,
   ],
   imports: [
     CommonModule,

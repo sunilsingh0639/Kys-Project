@@ -33,6 +33,10 @@ export class PlansComponent {
     })
   }
 
+  get form(){
+    return this.planForm.controls
+  }
+
 
   ///////// get book list
   getBookLists() {

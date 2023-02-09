@@ -10,55 +10,73 @@
             <div class="row">
                 <div class="col-md-3 form-group">
                     <label for=""><b>Enrollment Number</b></label>
-                    <input type="text" class="form-control" placeholder="Enrollment Number" name="vId"
-                        formControlName="vId">
+                    <input type="text" appOnlyDigit (blur)="getValue()" class="form-control"
+                        placeholder="Enrollment Number" name="vId" formControlName="vId"
+                        maxlength="12"
+                        [ngClass]="{ 'is-invalid':form['vId'].invalid && form['vId'].touched}"
+                        [ngClass]="{ 'is-valid':form['vId'].valid}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Volunteer Registration Number</b></label>
                     <input type="text" class="form-control" placeholder="Volunteer Registration Number" name="vRNumber"
-                        formControlName="vRNumber">
+                        [ngClass]="{ 'is-invalid':form['vRNumber'].invalid && form['vRNumber'].touched}"
+                        [ngClass]="{ 'is-valid':form['vRNumber'].valid}" formControlName="vRNumber">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>AADHAR Number</b></label>
-                    <input type="text" class="form-control" placeholder="AADHAR Number" name="uId"
-                        formControlName="uId">
+                    <input type="text" appOnlyDigit class="form-control" placeholder="AADHAR Number" name="uId" maxlength="12"
+                        formControlName="uId" [ngClass]="{ 'is-valid':form['uId'].valid}"
+                        [ngClass]="{ 'is-invalid':form['uId'].invalid && form['uId'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>First Name</b></label>
-                    <input type="text" class="form-control" placeholder="First name" name="firstName"
-                        formControlName="firstName">
+                    <input type="text" class="form-control" maxlength="16" placeholder="First name" name="firstName"
+                        formControlName="firstName" [ngClass]="{ 'is-valid':form['firstName'].valid}"
+                        [ngClass]="{ 'is-invalid':form['firstName'].invalid && form['firstName'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Middle Name</b></label>
-                    <input type="text" class="form-control" placeholder="Middle name" name="middleName"
-                        formControlName="middleName">
+                    <input type="text" class="form-control" maxlength="16" placeholder="Middle name" name="middleName"
+                        formControlName="middleName" [ngClass]="{ 'is-valid':form['middleName'].valid}"
+                        [ngClass]="{ 'is-invalid':form['middleName'].invalid && form['middleName'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Last Name</b></label>
-                    <input type="text" class="form-control" placeholder="Last name" name="lastName"
-                        formControlName="lastName">
+                    <input type="text" class="form-control" maxlength="16" placeholder="Last name" name="lastName"
+                        formControlName="lastName" [ngClass]="{ 'is-valid':form['lastName'].valid}"
+                        [ngClass]="{ 'is-invalid':form['lastName'].invalid && form['lastName'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>DOB</b></label>
-                    <input type="date" class="form-control" name="dob" formControlName="dob">
+                    <input type="date" class="form-control" name="dob" formControlName="dob"
+                        [ngClass]="{ 'is-valid':form['dob'].valid}"
+                        [ngClass]="{ 'is-invalid':form['dob'].invalid && form['dob'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Age</b></label>
-                    <input type="text" class="form-control" placeholder="Age" name="age" formControlName="age">
+                    <input type="text" appOnlyDigit maxlength="3" class="form-control" placeholder="Age" name="age"
+                        formControlName="age" [ngClass]="{ 'is-valid':form['age'].valid}"
+                        [ngClass]="{ 'is-invalid':form['age'].invalid && form['age'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Mobile (Primary)</b></label>
-                    <input type="text" class="form-control" placeholder="Mobile" name="mobile" formControlName="mobile">
+                    <input type="text" appOnlyDigit class="form-control" placeholder="Mobile" name="mobile"
+                        formControlName="mobile" maxlength="10"
+                        [ngClass]="{ 'is-invalid':form['mobile'].invalid && form['mobile'].touched}"
+                        [ngClass]="{ 'is-valid':form['mobile'].valid}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Mobile (Secondary)</b></label>
-                    <input type="text" class="form-control" placeholder="Mobile" name="secondaryMobile"
-                        formControlName="secondaryMobile">
+                    <input type="text" appOnlyDigit class="form-control" placeholder="Mobile" name="secondaryMobile" maxlength="10"
+                        formControlName="secondaryMobile" [ngClass]="{ 'is-valid':form['secondaryMobile'].valid}"
+                        [ngClass]="{ 'is-invalid':form['secondaryMobile'].invalid && form['secondaryMobile'].touched}">
                 </div>
                 <div class="col-md-3 form-group">
                     <label for=""><b>Email (Primary)</b></label>
                     <input type="text" class="form-control" placeholder="Email" name="primaryEmail"
-                        formControlName="primaryEmail">
+                        formControlName="primaryEmail"
+                        [ngClass]="{ 'is-invalid':form['primaryEmail'].invalid && form['primaryEmail'].touched}"
+                        [ngClass]="{ 'is-valid':form['primaryEmail'].valid}">
                 </div>
                 <div formArrayName="address" class="row">
                     <div id="current_Address" [formGroupName]="0">
@@ -70,23 +88,31 @@
                         <div class="row pt-4">
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Address Line 1</b></label>
-                                <input type="text" class="form-control" placeholder="Building / Society / House No."
-                                    name="addressLine1" formControlName="addressLine1">
+                                <input type="text" class="form-control" placeholder="Building / Society / House No." maxlength="16"
+                                    name="addressLine1" formControlName="addressLine1"
+                                    [ngClass]="{ 'is-invalid':c['addressLine1'].invalid && c['addressLine1'].touched}"
+                                    [ngClass]="{ 'is-valid':c['addressLine1'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Address Line 2</b></label>
                                 <input type="text" class="form-control" placeholder="Apt. No. /  Street etc"
-                                    name="addressLine2" formControlName="addressLine2">
+                                    name="addressLine2" maxlength="16" formControlName="addressLine2"
+                                    [ngClass]="{ 'is-invalid':c['addressLine2'].invalid && c['addressLine2'].touched}"
+                                    [ngClass]="{ 'is-valid':c['addressLine2'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Locality</b></label>
-                                <input type="text" class="form-control" placeholder="Landmark" name="locality"
-                                    formControlName="locality">
+                                <input type="text" class="form-control" placeholder="Landmark" name="locality" maxlength="16"
+                                    formControlName="locality"
+                                    [ngClass]="{ 'is-invalid':c['locality'].invalid && c['locality'].touched}"
+                                    [ngClass]="{ 'is-valid':c['locality'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>V&P/City</b></label>
                                 <input type="text" class="form-control" placeholder="City" name="city"
-                                    formControlName="city">
+                                    formControlName="city" maxlength="16"
+                                    [ngClass]="{ 'is-invalid':c['city'].invalid && c['city'].touched}"
+                                    [ngClass]="{ 'is-valid':c['city'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>State</b></label>
@@ -99,6 +125,7 @@
                             <div class="col-md-3 form-group">
                                 <label for=""><b>District</b></label>
                                 <select name="district" class="form-control" formControlName="district">
+                                    <option value=""></option>
                                     <option type="text" [value]="dist" *ngFor="let dist of allDistrcicts0?.data">
                                         {{dist}}
                                     </option>
@@ -107,17 +134,23 @@
                             <div class="col-md-2 form-group">
                                 <label for=""><b>V&P/City</b></label>
                                 <input type="text" class="form-control" placeholder="City" name="city"
-                                    formControlName="city">
+                                    formControlName="city" maxlength="16"
+                                    [ngClass]="{ 'is-invalid':c['city'].invalid && c['city'].touched}"
+                                    [ngClass]="{ 'is-valid':c['city'].valid}">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Tehsil</b></label>
                                 <input type="text" class="form-control" placeholder="Tehsil" name="tehsil"
-                                    formControlName="tehsil">
+                                    formControlName="tehsil" maxlength="16"
+                                    [ngClass]="{ 'is-invalid':c['tehsil'].invalid && c['tehsil'].touched}"
+                                    [ngClass]="{ 'is-valid':c['tehsil'].valid}">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Pin</b></label>
-                                <input type="text" class="form-control" placeholder="Pin" name="pin"
-                                    formControlName="pin">
+                                <input type="text" appOnlyDigit class="form-control" placeholder="Pin" name="pin" maxlength="6"
+                                    formControlName="pin"
+                                    [ngClass]="{ 'is-invalid':c['pin'].invalid && c['pin'].touched}"
+                                    [ngClass]="{ 'is-valid':c['pin'].valid}">
                             </div>
                         </div>
                     </div>
@@ -130,23 +163,30 @@
                         <div class="row pt-4">
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Address Line 1</b></label>
-                                <input type="text" class="form-control" placeholder="Building / Society / House No."
-                                    name="addressLine1" formControlName="addressLine1">
+                                <input type="text" class="form-control" placeholder="Building / Society / House No." maxlength="16"
+                                    name="addressLine1" formControlName="addressLine1"
+                                    [ngClass]="{ 'is-invalid':p['addressLine1'].invalid && p['addressLine1'].touched}"
+                                    [ngClass]="{ 'is-valid':p['addressLine1'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Address Line 2</b></label>
                                 <input type="text" class="form-control" placeholder="Apt. No. /  Street etc"
-                                    name="addressLine2" formControlName="addressLine2">
+                                    name="addressLine2" maxlength="16" formControlName="addressLine2"
+                                    [ngClass]="{ 'is-invalid':p['addressLine2'].invalid && p['addressLine2'].touched}"
+                                    [ngClass]="{ 'is-valid':p['addressLine2'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>Locality</b></label>
-                                <input type="text" class="form-control" placeholder="Landmark" name="locality"
-                                    formControlName="locality">
+                                <input type="text" class="form-control" placeholder="Landmark" name="locality" maxlength="16"
+                                    formControlName="locality"
+                                    [ngClass]="{ 'is-invalid':p['locality'].invalid && p['locality'].touched}"
+                                    [ngClass]="{ 'is-valid':p['locality'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>V&P/City</b></label>
                                 <input type="text" class="form-control" placeholder="City" name="city"
-                                    formControlName="city">
+                                    formControlName="city" [ngClass]="{ 'is-invalid':p['city'].invalid && p['city'].touched}" maxlength="16"
+                                    [ngClass]="{ 'is-valid':p['city'].valid}">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label for=""><b>State</b></label>
@@ -159,6 +199,7 @@
                             <div class="col-md-3 form-group">
                                 <label for=""><b>District</b></label>
                                 <select name="district" class="form-control" formControlName="district">
+                                    <option value=""></option>
                                     <option type="text" [value]="dist" *ngFor="let dist of allDistrcicts1?.data">
                                         {{dist}}
                                     </option>
@@ -167,17 +208,20 @@
                             <div class="col-md-2 form-group">
                                 <label for=""><b>V&P/City</b></label>
                                 <input type="text" class="form-control" placeholder="City" name="city"
-                                    formControlName="city">
+                                    formControlName="city" [ngClass]="{ 'is-invalid':p['city'].invalid && p['city'].touched}" maxlength="16"
+                                    [ngClass]="{ 'is-valid':p['city'].valid}">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Tehsil</b></label>
                                 <input type="text" class="form-control" placeholder="Tehsil" name="tehsil"
-                                    formControlName="tehsil">
+                                    formControlName="tehsil" [ngClass]="{ 'is-invalid':p['tehsil'].invalid && p['tehsil'].touched}" maxlength="16"
+                                    [ngClass]="{ 'is-valid':p['tehsil'].valid}">
                             </div>
                             <div class="col-md-2 form-group">
                                 <label for=""><b>Pin</b></label>
-                                <input type="text" class="form-control" placeholder="Pin" name="pin"
-                                    formControlName="pin">
+                                <input type="text" appOnlyDigit class="form-control" placeholder="Pin" name="pin" maxlength="6"
+                                    formControlName="pin" [ngClass]="{ 'is-invalid':p['pin'].invalid && p['pin'].touched}"
+                                    [ngClass]="{ 'is-valid':p['pin'].valid}">
                             </div>
                         </div>
                     </div>
@@ -185,7 +229,7 @@
                 <div class="row mt-4">
                     <div class="col-md-12" id="action_btn">
                         <button id="cancel" routerLink="/app/manage-camp/voluteer-master">Cancel</button>
-                        <button id="submit" (click)="addVolunteerMaster()">Submit</button>
+                        <button id="submit" [disabled]="volunteerMasterForm.invalid || cAddressForm.invalid || pAddressForm.invalid" (click)="addVolunteerMaster()">Submit</button>
                     </div>
                 </div>
             </div>
