@@ -15,11 +15,16 @@ export const ApiEnpoints = {
 
     userList : () => `http://103.224.246.103:3004/user/list/`,
 
-    subscriptionList : () => `http://103.224.246.103:3004/subscription/list/`
-    
+    subscriptionList : () => `http://103.224.246.103:3004/subscription/list/`,
+
+    deleteUser : () =>       `http://103.224.246.103:3004/user/deleteById?id=`,
+
+    addUserList:() => `http://103.224.246.103:3004/user`
 
 
-    userList : () => `http://103.224.246.103:3004/user/list/`     
+
+
+
 
 
 

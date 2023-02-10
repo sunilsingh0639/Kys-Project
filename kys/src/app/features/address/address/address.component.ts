@@ -49,7 +49,7 @@ export class AddressComponent implements OnInit {
       })
   }
 
- 
+
   getState() {
     this.addressService.getStateList()
       .subscribe((res: any) => {
@@ -58,20 +58,20 @@ export class AddressComponent implements OnInit {
       })
   }
 
-  
+
   searchData(){
     let data = {
       admin : this.addressForm.value.admin,
       state : this.addressForm.value.state,
       bookId : this.addressForm.value.bookId,
       city : this.addressForm.value.city
-      
+
 
     }
     this.addressService.getSearchData(data)
     .subscribe((res:any)=>{
       console.log(res)
-      
+
     })
   }
 
@@ -94,7 +94,7 @@ export class AddressComponent implements OnInit {
   resetForm(){
 
     this.addressForm.reset();
-    
+
   }
 
 
