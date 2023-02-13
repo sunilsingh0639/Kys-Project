@@ -39,16 +39,30 @@ export class VolunteerMasterService {
     return this.http.get(ApiEnpoints.campMaster() + 'validate-enrollment-number?id=' + vId)
   }
 
-
-
   private subject = new Subject
 
-setVolunteerData(data: any) {
-  this.subject.next(data)
-}
+  setVolunteerData(data: any) {
+    this.subject.next(data)
+  }
 
-getVolunteerData(): Observable < any > {
-  return this.subject.asObservable();
-}
+  getVolunteerData(): Observable<any> {
+    return this.subject.asObservable();
+  }
+
+
+  /////////////////////////// for movement member
+
+  getMemberIdByCampIds(id: any) {
+    return this.http.get(ApiEnpoints.campMaster() + 'getMemberIdsByCampId?campId=' + id)
+  }
+
+  addMemberstoCamp(body : any){
+    return this.http.post(ApiEnpoints.campMaster()+'addMembersToCamp',body)
+  }
+ 
+  addVolunteerstoCamp(body : any){
+    return this.http.post(ApiEnpoints.campMaster()+'addVolunttersToCamp',body)
+  }
+
 
 }
