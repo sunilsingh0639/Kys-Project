@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddMemberComponent } from './add-member/add-member.component';
 import { BatchMasterComponent } from './batch-master/batch-master.component';
+import { CampMasterComponent } from './camp-master/camp-master.component';
 import { CampTypeComponent } from './camp-type/camp-type.component';
 import { EditMemberComponent } from './edit-member/edit-member.component';
 import { EditVolunteerComponent } from './edit-volunteer/edit-volunteer.component';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'camp-type',
     component: CampTypeComponent
+  },
+  {
+    path : 'camp-master',
+    component: CampMasterComponent
   },
   {
     path: 'participantsType',

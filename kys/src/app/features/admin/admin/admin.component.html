@@ -1,0 +1,191 @@
+<div class="row" id="heading">
+  Manage admins
+</div>
+<div id="admin">
+  <div id="search">
+    <nav class="search_navbar" [formGroup]="adminForm">
+      <input type="search" placeholder="search.." aria-label="Search" formControlName="searchKey" name="searchKey"
+        (keyup)="filter(adminForm.value.searchKey)">
+      <button type="button" class="btn btn-primary"(click)="resetForm()" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        data-bs-whatever="@mdo">Add New</button>
+    </nav>
+  </div>
+
+
+
+
+  <div id="table">
+    <table class="table table-hover table-sortable">
+      <thead>
+        <tr>
+
+          <th class="col-1" scope="col">Id</th>
+          <th class="col-1" scope="col"></th>
+          <th class="col-2" scope="col"> Name</th>
+          <th class="col-2" scope="col">Father's Name</th>
+          <th class="col-1" scope="col">village/District</th>
+          <th class="col-2" scope="col">Phone</th>
+          <th class="col-1" scope="col">Region</th>
+          <th class="col-1" scope="col">Active</th>
+          <th class="col-1">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="clom" *ngFor="let user of allusers?.data ; let i= index">
+
+          <td>{{i+1}}</td>
+          <td><img src="../../../../assets/img/profiles/tansingh-ji.jpg" alt=""></td>
+          <td class="name">{{user.name}}</td>
+          <td>{{user.fatherName}}</td>
+          <td>{{user.city}}</td>
+          <td>{{user.mobile}}</td>
+          <td>{{user.region}}</td>
+          <td>{{user.active}}</td>
+
+
+          <td style="display: flex; flex-direction: row;">
+            <div class="edit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editUser(i)">
+              <i class="fa-solid fa-pen"></i>
+            </div>
+            <div class="delete" data-bs-target="#deleteModal" data-bs-toggle="modal" (click)="selectedUserId=user._id">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <form [formGroup]="adminForm">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Admin Details</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="name" formControlName="name">
+
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Email</label>
+              <input type="text" class="form-control" name="email" formControlName="email">
+            </div>
+
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">password</label>
+                          <input type="text" class="form-control" name="password" formControlName="password">
+                        </div>
+
+
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">father's Name</label>
+              <input type="text" class="form-control" name="fatherName" formControlName="fatherName">
+            </div>
+
+
+
+
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Region</label>
+              <input type="text" class="form-control" name="region" formControlName="region">
+            </div>
+
+
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Contact No.</label>
+              <input type="text" appOnlyDigit class="form-control" name="mobile" formControlName="mobile" maxlength="10" minlength="10">
+            </div>
+
+
+            <div class="mb-3">
+
+              <div class="form-group">
+
+                <label>State</label>
+                <h3></h3>
+
+
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  formControlName="state">
+                  <option></option>
+                  <option *ngFor="let state of allStates?.data" [value]="state">{{state}}</option>
+                </select>
+
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+
+              <div class="form-group">
+
+                <label>District</label>
+                <h3></h3>
+
+
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                  formControlName="city">
+                  <option></option>
+                  <option *ngFor="let dist of allDistrict?.data" [value]="dist">{{dist}}</option>
+
+                </select>
+
+              </div>
+            </div>
+
+
+
+            <div class="mb-3" id="address">
+              <label for="recipient-name" class="col-form-label">Address</label>
+              <input type="text"  class="form-control" name="Address" formControlName="address">
+
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button style="float: right; margin-right: 30px;" type="button" class="btn btn-primary"
+              data-bs-dismiss="modal"> <i class="fa-solid fa-xmark"></i>
+              Cancle</button>
+            <button style="float: right; margin-right: 30px;" (click)="addNewUser()" type="button"
+              class="btn btn-primary"><i class="fa-solid fa-check"></i>Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+<!-- delete pop up -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm</h5>
+        <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p> <span><i class="fa-solid fa-triangle-exclamation"></i></span>
+          Are you sure you want to delete the selected book?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          <i class="fa-solid fa-xmark"></i> No</button>
+        <button (click)="deleteUser()" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+          <i class="fa-solid fa-check"></i> Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

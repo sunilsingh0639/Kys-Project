@@ -14,11 +14,25 @@ export const ApiEnpoints = {
     ////////////// for subscriber , manage admin , manage address === >>>  userList
 
     userList : () => `http://103.224.246.103:3004/user/list/`,
-
-    subscriptionList : () => `http://103.224.246.103:3004/subscription/list/`
+    subscriptionList : () => `http://103.224.246.103:3004/subscription/list/`,
     
-    userList : () => `http://103.224.246.103:3004/user/list/`     
+   
+
+  
+
+    deleteUser : () =>       `http://103.224.246.103:3004/user/deleteById?id=`,
+
+    addUserList:() => `http://103.224.246.103:3004/user/`
+
+
+
+
+
+
 
 
 
 }
+
+ 
+
