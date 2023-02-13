@@ -16,6 +16,8 @@ import { MemberMasterComponent } from './member-master/member-master.component';
 import { EditMemberComponent } from './edit-member/edit-member.component';
 import { AddMemberComponent } from './add-member/add-member.component';
 import { MemberMovementComponent } from './member-movement/member-movement.component';
+import {MatSortModule} from '@angular/material/sort';
+
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { MemberMovementComponent } from './member-movement/member-movement.compo
     EditMemberComponent,
     AddMemberComponent,
     MemberMovementComponent
+  
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import { MemberMovementComponent } from './member-movement/member-movement.compo
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    MatSortModule
   ],
   exports: [
     SharedModule,
