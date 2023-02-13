@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { OnlyDigitDirective } from 'src/app/directives/only-digit.directive';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -25,6 +26,7 @@ import { OnlyDigitDirective } from 'src/app/directives/only-digit.directive';
     MatSelectModule,
     MatSortModule,
     MatCardModule,
+    DragDropModule
   ],
   exports: [
     MatTableModule,
@@ -34,6 +36,7 @@ import { OnlyDigitDirective } from 'src/app/directives/only-digit.directive';
     MatSelectModule,
     MatSortModule,
     MatCardModule,
+    DragDropModule,
     OnlyDigitDirective
   ]
 })

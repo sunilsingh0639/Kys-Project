@@ -1,1 +1,47 @@
-<p>member-movement works!</p>
+<div id="subscribe">
+    Add Members In Camp
+</div>
+<div id="admin">
+    <form action="" [formGroup]="memberMovementForm">
+        <div class="row pt-5">
+            <div class="col-md-3 form-group">
+                <label for="">Select Member Type</label>
+                <mat-select class="form-control" formControlName="type">
+                    <mat-option value="volunteer">Volunteer</mat-option>
+                    <mat-option value="member">Member</mat-option>
+                </mat-select>
+            </div>
+            <div class="col-md-3 form-group">
+                <label for="">Camp Number</label>
+                <mat-select style="min-width: 500px;" class="form-control" formControlName="campid">
+                    <mat-option value="{{camp.id}}" *ngFor="let camp of allCamps?.data">
+                        {{camp.id+'-'+camp.city+'-'+camp.dist+'-'+camp.state+'-'+camp.year}}
+                    </mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="container-fluid" cdkDropListGroup>
+            <div class="col-md-4">
+                <h3>Members List</h3>
+                <div cdkDropList [cdkDropListData]="members" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of members" cdkDrag>
+                        <p><span style="background-color: #5e4683; color: white; padding: 5px; border-radius: 20px; margin-right: 5px;">{{item.vId +' '}}</span>
+                            <span>{{item.firstName + ' '+item.middleName+ ' '+item.lastName+ ' '+item.address[0].city +' '+ '- - ' + item.address[0].state + '-'+item.mobile }}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>To Camp {{selectedCamp}}</h3>
+                <div cdkDropList [cdkDropListData]="camps" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of camps ; let i = index" cdkDrag>
+                        <p><span style="background-color: #5e4683; color: white; padding: 5px; border-radius: 20px;margin-right: 5px;">{{item.vId  +' '}}</span>
+                            <span>{{item.firstName + ' '+item.middleName+ ' '+item.lastName+ ' '+item.address[0].city +' '+ '- - ' + item.address[0].state + '-'+item.mobile }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3 btnn">
+            <button (click)="addToCamp()" >Submit</button>
+        </div>
+    </form>
+</div>
