@@ -9,7 +9,7 @@ import { LayoutsComponent } from './shared/layouts/layouts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorCatchingInterceptor } from './core/intercepters/error-catching.interceptor';
 import { TokenInterceptor } from './core/intercepters/token.interceptor';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SharedModule } from './shared/shared/shared.module';
 
 
 
@@ -25,10 +25,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    SharedModule,
   ],
   exports: [
-    MatSnackBarModule
+    SharedModule,
   ],
   providers: [
     {

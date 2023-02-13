@@ -9,8 +9,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { OnlyDigitDirective } from 'src/app/directives/only-digit.directive';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -26,9 +28,12 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatSelectModule,
     MatSortModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
   exports: [
+    MatSnackBarModule,
     MatTableModule,
     CdkTableModule,
     MatPaginatorModule,
@@ -37,7 +42,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatSortModule,
     MatCardModule,
     DragDropModule,
-    OnlyDigitDirective
+    OnlyDigitDirective,
+    MatProgressSpinnerModule,
   ]
 })
 export class SharedModule { }
