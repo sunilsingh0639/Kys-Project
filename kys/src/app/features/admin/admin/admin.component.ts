@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/core/services/admin.service';
+import { ValidateEmail } from 'src/app/directives/emailValidator';
+import { ValidateMobile } from 'src/app/directives/mobileValidator';
 
 @Component({
   selector: 'app-admin',
@@ -9,24 +11,39 @@ import { AdminService } from 'src/app/core/services/admin.service';
 })
 export class AdminComponent implements OnInit {
   adminForm: FormGroup;
-
+  allStates: any;
+  selectedState: any;
   allusers: any = [];
   selectedUserId: string = '';
+  allDistrict: any;
 
   constructor(private admin: AdminService, private fb: FormBuilder) {
     this.adminForm = this.fb.group({
       searchKey: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      fname: ['', [Validators.required]],
+      name: ["", [Validators.required]],
+      email: ['', [Validators.required , ValidateEmail]],
+      fatherName: ['', [Validators.required]],
       region: ['', [Validators.required]],
-      contact: ['', [Validators.required]],
+      mobile: ['', [Validators.required , ValidateMobile]],
       state: ['', [Validators.required]],
-      district: ['', [Validators.required]],
+      city: ['', [Validators.required]],
       address: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+
     });
     this.getUserList();
+    this.getState();
+    this.adminForm.controls['state'].valueChanges
+    .subscribe(res =>{
+      this.selectedState = res
+      this.admin.getDistrictList(this.selectedState)
+      .subscribe(res => {
+        console.log(res)
+        this.allDistrict = res
+      })
+
+
+    })
   }
 
   getUserList() {
@@ -36,68 +53,87 @@ export class AdminComponent implements OnInit {
     });
   }
 
+
   ngOnInit(): void {
     this.getUserList();
   }
+
+  getState() {
+    this.admin.getStateList()
+      .subscribe((res: any) => {
+        console.log(res)
+        this.allStates = res
+      })
+  }
   editSelected!: number;
   addNewUser() {
-    if (this.editSelected) {
-      var formData = new FormData();
-      formData.append('name', this.adminForm.controls['name']?.value);
-      formData.append('email', this.adminForm.controls['email']?.value);
-      formData.append('password', this.adminForm.controls['password']?.value);
-      formData.append('city', this.adminForm.controls['city']?.value);
-      formData.append('address', this.adminForm.controls['address']?.value);
-      formData.append('state', this.adminForm.controls['state']?.value);
-      formData.append('fname', this.adminForm.controls['fname']?.value);
-      formData.append('region', this.adminForm.controls['region']?.value);
-      formData.append('mobile', this.adminForm.controls['mobile']?.value);
-      formData.append('_id', this.allusers.data[this.editSelected]._id);
+    if (this.editSelected != null) {
+      let data = {
+        address : this.adminForm.value.address,
+        name : this.adminForm.value.name,
+        fatherName : this.adminForm.value.fatherName,
+        city : this.adminForm.value.city,
+        state : this.adminForm.value.state,
+        mobile : this.adminForm.value.mobile,
+        region : this.adminForm.value.region,
+        email : this.adminForm.value.email,
+        _id: this.allusers?.data[this.editSelected]._id
 
-      this.admin.editUser(formData).subscribe((res: any) => {
-        console.log(res);
-        this.getUserList();
-      });
-    } else {
-      var formData = new FormData();
-      formData.append('name', this.adminForm.controls['name']?.value);
-      formData.append('email', this.adminForm.controls['email']?.value);
-      formData.append('password', this.adminForm.controls['password']?.value);
-      formData.append('city', this.adminForm.controls['city']?.value);
-      formData.append('address', this.adminForm.controls['address']?.value);
-      formData.append('state', this.adminForm.controls['state']?.value);
-      formData.append('fname', this.adminForm.controls['fname']?.value);
-      formData.append('region', this.adminForm.controls['region']?.value);
-      formData.append('mobile', this.adminForm.controls['mobile']?.value);
-      formData.append('_id', this.allusers.data[this.editSelected]._id);
 
-      this.admin.addNewUser(formData).subscribe((res: any) => {
+      }
+
+      this.admin.editUser(data)
+      .subscribe((res: any) => {
         console.log(res);
         this.getUserList();
       });
     }
-    this.adminForm.reset();
+
+    else {
+
+      let data = {
+        address : this.adminForm.value.address,
+        name : this.adminForm.value.name,
+        fatherName : this.adminForm.value.fatherName,
+        city : this.adminForm.value.city,
+        state : this.adminForm.value.state,
+        mobile : this.adminForm.value.mobile,
+        region : this.adminForm.value.region,
+        email : this.adminForm.value.email,
+        password : '',
+
+      }
+
+      this.admin.addNewUser(data)
+      .subscribe((res: any) => {
+
+        console.log(res);
+        this.getUserList();
+      });
+    }
+    // this.adminForm.reset();
   }
 
+
+  //edit user
   editUser(i: number) {
     this.editSelected = i;
     this.adminForm.patchValue({
-      name: this.allusers.data[this.editSelected].name,
-      email: this.allusers.data[this.editSelected].email,
-      address: this.allusers.data[this.editSelected].address,
-      city: this.allusers.data[this.editSelected].city,
-      region: this.allusers.data[this.editSelected].region,
-      fname: this.allusers.data[this.editSelected].fname,
-      password: this.allusers.data[this.editSelected].password,
-      state: this.allusers.data[this.editSelected].state,
-      mobile: this.allusers.data[this.editSelected].mobile,
+      name: this.allusers?.data[this.editSelected].name,
+      email: this.allusers?.data[this.editSelected].email,
+      address: this.allusers?.data[this.editSelected].address,
+      city: this.allusers?.data[this.editSelected].city,
+      region: this.allusers?.data[this.editSelected].region,
+      fatherName: this.allusers?.data[this.editSelected].fatherName,
+      state: this.allusers?.data[this.editSelected].state,
+      mobile: this.allusers?.data[this.editSelected].mobile,
     });
   }
 
   ///delete user
 
   deleteUser() {
-    // console.log(this.selectedUserId);
+
     this.admin.deleteByid(this.selectedUserId)
     .subscribe((res: any) => {
       console.log(res);

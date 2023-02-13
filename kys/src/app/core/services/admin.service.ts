@@ -24,40 +24,19 @@ export class AdminService {
 
   }
 
-  editUser(body:any){
-    return this.http.post(ApiEnpoints.addUserList()+'update',body)
+  editUser(data:any){
+    return this.http.post(ApiEnpoints.addUserList()+'update',data);
   }
 
+  getStateList(){
+    return this.http.get(ApiEnpoints.stateList())
+  }
+
+  getDistrictList(selectedState : any){
+    return this.http.get(ApiEnpoints.districtList()+selectedState)
+  }
 
 }
-  // addNewUser(body: any) {
-  //   const headers = new HttpHeaders().set(
-  //     'Authorization',
-  //     `Bearer ${sessionStorage.getItem('token')}`
-  //   );
-  //   return this.http.post(' http://103.224.246.103:3004/user', body, {
-  //     headers: headers,
-  //   });
-  // }
 
-  // editUser(body: any) {
-  //   const headers = new HttpHeaders().set(
-  //     'Authorization',
-  //     `Bearer ${sessionStorage.getItem('token')}`
-  //   );
-  //   return this.http.post('http://103.224.246.103:3004/user/update', body, {
-  //     headers: headers,
-  //   });
-  // }
-
-  // deleteByid(userid: string) {
-  //   const headers = new HttpHeaders()
-  //     .set('content-type', 'application/json')
-  //     .set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
-  //   return this.http.get(
-  //     'http://103.224.246.103:3004/user/deleteById?id' + userid,
-  //     { headers: headers }
-  //   );
-  // }
 
 
